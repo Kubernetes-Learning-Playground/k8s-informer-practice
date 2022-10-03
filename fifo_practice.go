@@ -1,0 +1,62 @@
+package main
+
+import (
+	"fmt"
+	"k8s.io/client-go/tools/cache"
+)
+
+// 自定义pod对象
+type pod struct {
+	Name string
+	Value float64
+}
+
+// 构建pod
+func newPod(name string, v float64) pod {
+	return pod{
+		Name: name,
+		Value: v,
+	}
+}
+
+func podKeyFunc(obj interface{}) (string, error) {
+	return obj.(pod).Name, nil
+}
+
+// 简单操作delta fifo队列。
+
+func main() {
+
+	// delta fifo queue的作用
+	df := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{KeyFunction: podKeyFunc})
+	// list-watch 机制拿到的资源
+	// 先入先出队列
+	pod1 := newPod("pod1", 1)
+	pod2 := newPod("pod2", 2)
+	pod3 := newPod("pod3", 3)
+	_ = df.Add(pod1)
+	_ = df.Add(pod2)
+	_ = df.Add(pod3)
+	fmt.Println(df.List())
+	pod1.Value = 1.111
+	_ = df.Update(pod1)
+	_ = df.Delete(pod1)
+
+	_, _ = df.Pop(func(obj interface{}) error {
+		for _, delta := range obj.(cache.Deltas) {
+			fmt.Println(delta.Type, ":", delta.Object.(pod).Name, "value:", delta.Object.(pod).Value) // 断言为pod，因为只有pod
+
+			switch delta.Type {
+			case cache.Added:
+				fmt.Println("执行新增回调")
+			case cache.Updated:
+				fmt.Println("执行更新回调")
+			case cache.Deleted:
+				fmt.Println("执行删除回调")
+			}
+		}
+
+		return nil
+	})
+
+}
