@@ -1,5 +1,5 @@
 ## k8s-informer机制开发
-
+![](https://github.com/googs1025/k8s-informer-practice/blob/main/image/framework.png?raw=true)
 ### 项目主要思路：
 1. 练习运用**k8s+client-go**的informer机制搞一些简单的demo。
 
