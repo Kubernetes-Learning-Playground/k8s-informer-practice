@@ -31,21 +31,28 @@ func main() {
 	df := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{KeyFunction: podKeyFunc})
 	// list-watch 机制拿到的资源
 	// 先入先出队列
+
+	// 1.建立对象
 	pod1 := newPod("pod1", 1)
 	pod2 := newPod("pod2", 2)
 	pod3 := newPod("pod3", 3)
+	// 2.push到fifo队列 add事件
 	_ = df.Add(pod1)
 	_ = df.Add(pod2)
 	_ = df.Add(pod3)
 	fmt.Println(df.List())
 	pod1.Value = 1.111
+	// 3.push到fifo队列 update事件
 	_ = df.Update(pod1)
+	// 4.push到fifo队列 delete事件
 	_ = df.Delete(pod1)
 
+	// 从fifo中pop出来。
 	_, _ = df.Pop(func(obj interface{}) error {
 		for _, delta := range obj.(cache.Deltas) {
 			fmt.Println(delta.Type, ":", delta.Object.(pod).Name, "value:", delta.Object.(pod).Value) // 断言为pod，因为只有pod
 
+			// 这里进行回调
 			switch delta.Type {
 			case cache.Added:
 				fmt.Println("执行新增回调")

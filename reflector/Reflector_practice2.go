@@ -37,11 +37,11 @@ func main() {
 				// 遍历后需要判断回调类型，并加入store中，不然无法取到事件。
 				switch delta.Type {
 				case cache.Added, cache.Sync:
-					store.Add(delta.Object)
+					_ = store.Add(delta.Object)
 				case cache.Updated:
-					store.Update(delta.Object)
+					_ = store.Update(delta.Object)
 				case cache.Deleted:
-					store.Delete(delta.Object)
+					_ = store.Delete(delta.Object)
 				}
 
 				fmt.Println(delta.Type, ":", delta.Object.(*v1.Pod).Name, ":", delta.Object.(*v1.Pod).Status.Phase)

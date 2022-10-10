@@ -9,29 +9,41 @@ import (
 	"testing"
 )
 
+// 资源handler对象
 type PodHandler struct {
-	
 }
 
+// OnAdd 当有add事件时，使用的回调函数
 func (p PodHandler) OnAdd(obj interface{}) {
 	fmt.Println("OnAdd:", obj.(*v1.Pod).Name)
 }
 
+// OnUpdate 当有update事件时，使用的回调函数
 func (p PodHandler) OnUpdate(oldObj, newObj interface{}) {
 	fmt.Println("OnUpdate:", newObj.(*v1.Pod).Name)
 }
 
+// OnDelete 当有delete事件时，使用的回调函数
 func (p PodHandler) OnDelete(obj interface{}) {
 	fmt.Println("OnDelete:", obj.(*v1.Pod).Name)
 }
 
+// 加入资源handler
 var _ cache.ResourceEventHandler = &PodHandler{}
 
-func WatchDogTest(t *testing.T) {
+func TestWatchExamlpe(t *testing.T) {
+	// 建立client
 	client := src.InitClient()
-
-	podLW := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
-	wd := NewWatchDog(podLW, &v1.Pod{}, &PodHandler{})
+	// 客户端
+	podLW := cache.NewListWatchFromClient(
+		client.CoreV1().RESTClient(),
+		"pods",
+		"default",
+		fields.Everything(),
+	)
+	// 增新对象
+	wd := NewWatchWatchExamlpe(podLW, &v1.Pod{}, &PodHandler{})
+	// 启动
 	wd.Run()
 
 }

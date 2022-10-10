@@ -7,7 +7,8 @@ import (
 
 // 实现简单Informer机制
 
-type WatchDog struct {
+// WatchDog 对象
+type WatchExamlpe struct {
 	// 外部给的
 	lw *cache.ListWatch	// list-watcher
 	objType runtime.Object	// k8s资源总称
@@ -19,38 +20,45 @@ type WatchDog struct {
 	store cache.Store
 }
 
-// NewWatchDog 构建函数
-func NewWatchDog(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchDog {
+// NewWatchDog 构建函数，输入参数：lw:list-watch objType:资源种类 h:资源handler
+func NewWatchWatchExamlpe(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchExamlpe {
 
+	// 新建Store
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
 
+	// 新建FIFO
 	fifo := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{
 		KeyFunction: cache.MetaNamespaceKeyFunc,
 		KnownObjects: store,
 	})
 
+	// 新建Reflector
 	rf := cache.NewReflector(lw, objType, fifo, 0)
 
-	return &WatchDog{
-		lw: lw,
-		objType: objType,
-		h: h,
-		store: store,
-		fifo: fifo,
-		reflector: rf,
+	return &WatchExamlpe{
+		lw: lw,	// list-watch
+		objType: objType,	// 资源
+		h: h,	// 资源的handler
+		store: store,	// 本地缓存
+		fifo: fifo,		// 队列
+		reflector: rf,	// reflector
 	}
-
 
 }
 
-func (wd *WatchDog) Run() {
+func (wd *WatchExamlpe) Run() {
+
+	//
 	ch := make(chan struct{})
 	go func() {
+		// 启动run
 		wd.reflector.Run(ch)
 	}()
-	
+
+	// 不断从队列取出来
 	for {
-		wd.fifo.Pop(func(obj interface{}) error {
+		// 从fifo队列中 pop出来
+		_, _ = wd.fifo.Pop(func(obj interface{}) error {
 
 			for _, delta := range obj.(cache.Deltas) {
 				switch delta.Type {
@@ -70,7 +78,7 @@ func (wd *WatchDog) Run() {
 				}
 			}
 			return nil
-			
+
 		})
 	}
 }

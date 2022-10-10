@@ -22,6 +22,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("%T\n", list)
+	// 反射一下，不然interface{}不能遍历
 	podList := list.(*v1.PodList)
 
 	for _, pod := range podList.Items {
