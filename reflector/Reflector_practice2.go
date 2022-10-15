@@ -13,7 +13,7 @@ import (
 func main() {
 
 	client := src.InitClient()
-	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
+	store := cache.NewStore(cache.MetaNamespaceKeyFunc)	// 缓存
 	podListWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "dafault", fields.Everything())
 	// 默认下，只有支持一个回调函数。
 	df := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{
@@ -21,6 +21,13 @@ func main() {
 		KnownObjects: store,	// 会存内容到缓存中
 	})
 
+	/*
+		reflector：
+		资源的list-watcher
+		资源对象
+		delta fifo队列
+		同步list时间: k8s list的时间
+	 */
 	rf := cache.NewReflector(podListWatcher, &v1.Pod{}, df, 0)
 	ch := make(chan struct{})
 	

@@ -5,6 +5,10 @@ import (
 	"k8s.io/client-go/tools/cache"
 )
 
+/*
+	手动把自定义资源放入fifo中，并加入回调方法，让取出资源的时候可以执行回调函数。
+ */
+
 // 自定义pod对象 (想加入的自定义资源对象。)
 type pod struct {
 	Name string
