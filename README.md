@@ -5,6 +5,8 @@
 
 2. 总结一些informer组件的原理逻辑。
 
+3. 同时介绍一下informer机制里常用的组件：Reflector、Delta fifo、Indexer等
+
 ### 
 ```bigquery
 ├── README.md

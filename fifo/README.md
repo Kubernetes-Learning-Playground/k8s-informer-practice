@@ -1,6 +1,11 @@
 ## DeltaFIFO队列原理简介与使用事例
-DeltaFIFO队列在informer机制中如下图所示，它作为了**Apiserver**和**本地**(**Indexer**、**Listener**)之间的桥梁。它是一个生产者消费者队列，拥有FIFO的特性，操作的资源对象为Delta。每一个Delta包含一个操作类型和操作对象。
+DeltaFIFO队列在informer机制中如下图所示，它作为了**Apiserver**和**本地**(**Indexer**、**Listener**)之间的桥梁。它是一个生产者消费者队列，拥有FIFO的特性，操作的资源对象为Delta。
+
+每一个Delta包含一个操作类型和操作对象。
+1. FiFo:先进先出队列 有队列基本的方法(ADD UPDATE DELETE LIST POP CLOSE)
+2. Delta: 存储**对象**与**对象的行为** Added Updated Deleted Sync
 ![]()
+
 下面可视化DeltaQueue中最主要的两个存储结构queue和items。
 ![]()
 

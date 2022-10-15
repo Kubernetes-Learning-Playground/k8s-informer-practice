@@ -5,7 +5,7 @@ import (
 	"k8s.io/client-go/tools/cache"
 )
 
-// 自定义pod对象
+// 自定义pod对象 (想加入的自定义资源对象。)
 type pod struct {
 	Name string
 	Value float64
@@ -40,14 +40,14 @@ func main() {
 	_ = df.Add(pod1)
 	_ = df.Add(pod2)
 	_ = df.Add(pod3)
-	fmt.Println(df.List())
+	fmt.Println(df.List())	// 返回所有列表
 	pod1.Value = 1.111
 	// 3.push到fifo队列 update事件
 	_ = df.Update(pod1)
 	// 4.push到fifo队列 delete事件
 	_ = df.Delete(pod1)
 
-	// 从fifo中pop出来。
+	// 从fifo中pop出来。当中有个回调函数，作用是分别不同事件所有做的不同回调方法
 	_, _ = df.Pop(func(obj interface{}) error {
 		for _, delta := range obj.(cache.Deltas) {
 			fmt.Println(delta.Type, ":", delta.Object.(pod).Name, "value:", delta.Object.(pod).Value) // 断言为pod，因为只有pod
