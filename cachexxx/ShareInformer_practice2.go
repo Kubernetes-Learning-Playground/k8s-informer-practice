@@ -61,11 +61,13 @@ func NewMySharedInformer(lw *ListWatch, objType runtime.Object, indexer Indexer)
 	}
 }
 
+// input：接口对象： 实现 OnAdd OnUpdate OnDelete方法的对象
 func (msi *MySharedInformer) addEventHandler(handler ResourceEventHandler) {
 	lis := newProcessListener(handler, 0, 0, time.Now(), 1024)
 	msi.processor.addListener(lis)
 }
 
+// start 不断从fifo中取数据
 func (msi *MySharedInformer) start(ch <-chan struct{}) {
 
 	go func() {
@@ -101,6 +103,7 @@ func (msi *MySharedInformer) start(ch <-chan struct{}) {
 
 	}()
 
+	// reflector 监听资源。
 	go func() {
 		msi.reflector.Run(ch)
 	}()

@@ -12,12 +12,15 @@ import (
 )
 
 func TestPodInformer(t *testing.T) {
+	// client客户端
 	client := src.InitClient()
 	stopC := make(chan struct{})
 	defer close(stopC)
 
+	// sharedInformer实例
 	sharedInformers := informers.NewSharedInformerFactory(client, time.Minute)
-	informer := sharedInformers.Core().V1().Pods().Informer()
+	informer := sharedInformers.Core().V1().Pods().Informer()	// informer 可以add多个资源的实例
+
 
 	podHandler := cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {
@@ -38,7 +41,7 @@ func TestPodInformer(t *testing.T) {
 
 	}
 
-	informer.AddEventHandler(podHandler)
+	informer.AddEventHandler(podHandler)	// 加入handler！
 	fmt.Println("pod informer start!")
 	informer.Run(stopC)
 

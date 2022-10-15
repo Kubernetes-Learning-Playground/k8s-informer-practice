@@ -42,7 +42,7 @@ func TestWatchExamlpe(t *testing.T) {
 		fields.Everything(),
 	)
 	// 增新对象
-	wd := NewWatchWatchExamlpe(podLW, &v1.Pod{}, &PodHandler{})
+	wd := NewWatchWatchExample(podLW, &v1.Pod{}, &PodHandler{})
 	// 启动
 	wd.Run()
 

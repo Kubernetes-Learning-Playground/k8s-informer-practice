@@ -7,7 +7,7 @@ import (
 
 // 实现简单Informer机制
 
-// WatchDog 对象
+// WatchExamlpe 对象
 type WatchExamlpe struct {
 	// 外部给的
 	lw *cache.ListWatch	// list-watcher
@@ -21,7 +21,7 @@ type WatchExamlpe struct {
 }
 
 // NewWatchDog 构建函数，输入参数：lw:list-watch objType:资源种类 h:资源handler
-func NewWatchWatchExamlpe(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchExamlpe {
+func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchExamlpe {
 
 	// 新建Store
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
@@ -63,7 +63,7 @@ func (wd *WatchExamlpe) Run() {
 			for _, delta := range obj.(cache.Deltas) {
 				switch delta.Type {
 				case cache.Sync, cache.Added:
-					_ = wd.store.Add(delta.Object)
+					_ = wd.store.Add(delta.Object)	// 存入store缓存
 					wd.h.OnAdd(delta.Object) // 实现回调
 				case cache.Deleted:
 					_ = wd.store.Delete(delta.Object)
