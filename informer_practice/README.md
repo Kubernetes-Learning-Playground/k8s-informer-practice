@@ -22,6 +22,7 @@
    a. 将对象加入本地缓存store中。
    b. 触发事先定义好的handler回调函数。
 3. **indexer**：根据多个索引函数来维护加入的索引。
+   a. 使用MetaNamespaceKeyFunc 函数 key为 ns value 为
 
 ### list()机制
 主动查询资源对象的list接口。

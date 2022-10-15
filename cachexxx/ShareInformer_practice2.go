@@ -181,6 +181,7 @@ func Test() {
 	go func() {
 		r := gin.New()
 		r.GET("/", func(c *gin.Context) {
+			// 会捞出 app-nginx的pod！
 			ret, _ := myindex.IndexKeys("app", "nginx")
 			c.JSON(200, ret)
 		})
