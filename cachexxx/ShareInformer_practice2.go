@@ -111,7 +111,7 @@ func (msi *MySharedInformer) start(ch <-chan struct{}) {
 }
 
 
-// 自定义一个方法 模拟MetaNamespaceIndexFunc用的！
+// MetaLableIndexFunc 自定义一个方法 模拟MetaNamespaceIndexFunc用的！
 func MetaLableIndexFunc(obj interface{}) ([]string, error) {
 	meta, err := meta.Accessor(obj)
 	if err != nil {

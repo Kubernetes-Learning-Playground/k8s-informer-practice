@@ -10,6 +10,10 @@
 
 并针对不同事件(add update delete)进行不同的回调方法。
 
+当Get或List资源时，informer不会直接去请求api-server，而是查找缓存在本地内存的数据。
+1. 查询快 
+2. 减少对api-server压力
+
 **informer机制组件与步骤**
 1. **Reflector**：用于监听k8s资源对象，主要使用list-watch方法进行。
    

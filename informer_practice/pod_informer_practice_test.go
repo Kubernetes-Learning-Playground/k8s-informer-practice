@@ -21,7 +21,7 @@ func TestPodInformer(t *testing.T) {
 	sharedInformers := informers.NewSharedInformerFactory(client, time.Minute)
 	informer := sharedInformers.Core().V1().Pods().Informer()	// informer 可以add多个资源的实例
 
-
+	// 回调函数
 	podHandler := cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {
 			podObj := obj.(v1.Object)
@@ -40,7 +40,6 @@ func TestPodInformer(t *testing.T) {
 		},
 
 	}
-
 	informer.AddEventHandler(podHandler)	// 加入handler！
 	fmt.Println("pod informer start!")
 	informer.Run(stopC)

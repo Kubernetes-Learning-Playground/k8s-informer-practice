@@ -31,6 +31,33 @@
 │   └── ShareInformer_practice.go
 └── src // client初始化
     └── K8sConfig.go
+    
+├── README.md
+├── cachexxx
+│   ├── ShareInformer_practice2.go
+├── cachexxxxTest.go
+├── fifo // informer队列Demo
+│   ├── README.md
+│   └── fifo_practice.go
+├── image
+│   └── framework.png
+├── informer_practice
+│   ├── README.md
+│   ├── WatchExamlpe.go // 自定义资源的informer
+│   ├── WatchExamlpe_test.go
+│   ├── configMap_index_informer_test.go // 加入index的informer   
+│   ├── configMap_informer_practice_test.go
+│   └── pod_informer_practice_test.go
+├── reflector
+│   ├── README.md
+│   ├── Reflector_practice.go   // list-watch接口demo
+│   └── Reflector_practice2.go  // 使用Reflector+ delta fifo 
+├── shareInformer   // 多资源informer方法
+│   ├── ShareInformerFactory_practice.go // 多资源使用同个informer监听
+│   ├── ShareInformer_practice.go
+│   └── shareInformer_test.go
+└── src // clinet初始化
+    └── K8sConfig.go
 ```
 
 

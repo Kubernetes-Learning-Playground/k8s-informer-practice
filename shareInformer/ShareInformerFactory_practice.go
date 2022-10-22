@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"k8s-informer-controller-practice/src"
-	v1 "k8s.io/api/core/v1"
 	v11 "k8s.io/api/apps/v1"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/kubernetes"
@@ -45,7 +45,7 @@ func (f *MyFactory) DeploymentInformer() cache.SharedIndexInformer {
 		return informer
 	}
 
-	deploymentLW := cache.NewListWatchFromClient(f.client.AppsV1().RESTClient(), "deployment", "default", fields.Everything())
+	deploymentLW := cache.NewListWatchFromClient(f.client.AppsV1().RESTClient(), "deployments", "default", fields.Everything())
 	indexers := cache.Indexers{
 		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc,
 	}
@@ -53,8 +53,9 @@ func (f *MyFactory) DeploymentInformer() cache.SharedIndexInformer {
 	f.informers[reflect.TypeOf(&v11.Deployment{})] = informer
 	return informer
 
-
 }
+
+
 
 
 func (f *MyFactory) Start() {
@@ -73,25 +74,26 @@ func main() {
 	fact.PodInformer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		// 注册函数
 		AddFunc: func(obj interface{}) {
-			fmt.Println(obj.(*v1.Pod).Name)
+			fmt.Println("新增的pod:", obj.(*v1.Pod).Name)
 		},
 		UpdateFunc: func(oldObj, newObj interface{}) {
-			fmt.Println(oldObj.(*v1.Pod).Name, newObj.(*v1.Pod).Name)
+			fmt.Println("修改的pod:",oldObj.(*v1.Pod).Name, newObj.(*v1.Pod).Name)
 		},
 		DeleteFunc: func(obj interface{}) {
-			fmt.Println(obj.(*v1.Pod).Name)
+			fmt.Println("删除的pod",obj.(*v1.Pod).Name)
 		},
 	})
 
+	// 注册handler
 	fact.DeploymentInformer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {
-			fmt.Println(obj.(*v11.Deployment).Name)
+			fmt.Println("新增的deployment：",obj.(*v11.Deployment).Name)
 		},
 		UpdateFunc: func(oldObj, newObj interface{}) {
-			fmt.Println(oldObj.(*v11.Deployment).Name, newObj.(*v11.Deployment).Name)
+			fmt.Println("更新的deployment：", oldObj.(*v11.Deployment).Name, newObj.(*v11.Deployment).Name)
 		},
 		DeleteFunc: func(obj interface{}) {
-			fmt.Println(obj.(*v11.Deployment).Name)
+			fmt.Println("删除的deployment：",obj.(*v11.Deployment).Name)
 		},
 	})
 
@@ -102,10 +104,10 @@ func main() {
 	r := gin.New()
 
 	defer func() {
-		_ = r.Run("8082")
+		_ = r.Run(":8082")
 	}()
 
-	fmt.Printf("启动服务器")
+	fmt.Println("启动服务器")
 
 	r.GET("/pod", func(c *gin.Context) {
 		fact.PodInformer().GetIndexer().List()
