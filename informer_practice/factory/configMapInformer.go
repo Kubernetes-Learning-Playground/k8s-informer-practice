@@ -4,8 +4,20 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/tools/cache"
+	"reflect"
 	"strings"
 )
+
+type MyFactory struct {
+	InformersMap map[reflect.Type]cache.SharedIndexInformer
+}
+
+func NewMyFactory() *MyFactory {
+	return &MyFactory{
+		InformersMap: make(map[reflect.Type]cache.SharedIndexInformer),
+	}
+}
+
 
 func Watch(fact informers.SharedInformerFactory, groupVersion, resource string) cache.SharedIndexInformer {
 	gv := strings.Split(groupVersion,"/")

@@ -4,28 +4,60 @@ import (
 	"github.com/gin-gonic/gin"
 	"k8s-informer-controller-practice/informer_practice/factory"
 	"k8s-informer-controller-practice/src"
+	v1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/tools/cache"
+	"reflect"
 	"testing"
 )
 
 func TestConfigMapInformerWithGin(t *testing.T) {
 
 	client := src.InitClient()
+
 	fact := informers.NewSharedInformerFactoryWithOptions(client, 0, informers.WithNamespace("default"))
-	configMapInformer := factory.Watch(fact, "v1", "configmaps")
-	err := configMapInformer.AddIndexers(cache.Indexers{
-		"labels": factory.CmIndexFunc,	// 除了label外，也可以加入自定义检索的index
-		"annotations": factory.CmAnnotationsFunc,
+
+	podInformer := factory.Watch(fact, "v1", "pods")
+	err := podInformer.AddIndexers(cache.Indexers{
+		"labels": factory.LabelIndexFunc,	// 除了label外，也可以加入自定义检索的index
+		"annotations": factory.AnnotationsIndexFunc,
 	})
 	if err != nil {
 		panic(err)
 	}
 
+	configMapInformer := factory.Watch(fact, "v1", "configmaps")
+	err = configMapInformer.AddIndexers(cache.Indexers{
+		"labels": factory.LabelIndexFunc,	// 除了label外，也可以加入自定义检索的index
+		"annotations": factory.AnnotationsIndexFunc,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	deploymentInformer := factory.Watch(fact, "apps/v1", "deployments")
+	err = deploymentInformer.AddIndexers(cache.Indexers{
+		"labels": factory.LabelIndexFunc,	// 除了label外，也可以加入自定义检索的index
+		"annotations": factory.AnnotationsIndexFunc,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+
+
+	factMap := factory.NewMyFactory()
+	factMap.InformersMap[reflect.TypeOf(&v1.Pod{})] = podInformer
+	factMap.InformersMap[reflect.TypeOf(&v1.ConfigMap{})] = configMapInformer
+	factMap.InformersMap[reflect.TypeOf(&metav1.Deployment{})] = deploymentInformer
+
+	// 开始加入
 	factory.Start(fact)
 
+	// 服务端启动
 	r := gin.New()
 
 	defer func() {
@@ -61,6 +93,7 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 
 	/*
 		通用资源的informer 路由处理
+		ex: http://1.14.120.233:8082/core/v1/pods?labels[app]=webapp
 		请求事例：localhost:8080/core/v1/configmaps?labels[app]=dev
 		思考：localhost:8080/apps/v1/deployments 为何显示不出来也没报错
 	 */

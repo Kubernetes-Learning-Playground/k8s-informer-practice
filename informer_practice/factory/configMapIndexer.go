@@ -6,7 +6,7 @@ import (
 )
 
 
-func CmIndexFunc(obj interface{}) ([]string, error) {
+func LabelIndexFunc(obj interface{}) ([]string, error) {
 	meta, err := meta.Accessor(obj)
 	if err != nil {
 		return []string{""}, fmt.Errorf("object has no meta: %v", err)
@@ -23,7 +23,7 @@ func CmIndexFunc(obj interface{}) ([]string, error) {
 }
 
 
-func CmAnnotationsFunc(obj interface{}) ([]string, error) {
+func AnnotationsIndexFunc(obj interface{}) ([]string, error) {
 	meta, err := meta.Accessor(obj)
 	if err != nil {
 		return []string{""}, fmt.Errorf("object has no meta: %v", err)
