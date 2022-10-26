@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"k8s-informer-controller-practice/informer_practice/factory"
 	"k8s-informer-controller-practice/src"
-	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/api/apps/v1"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/informers"
@@ -13,6 +13,14 @@ import (
 	"reflect"
 	"testing"
 )
+
+/*
+	http://xxxxxxxxxx:8082/apps/v1/deployments?labels[app]=webapp&annotations[deployment.kubernetes.io/revision]=1
+	http://xxxxxxxxxx:8082/core/v1/pods
+	http://xxxxxxxxxx:8082/core/v1/configmaps
+
+
+ */
 
 func TestConfigMapInformerWithGin(t *testing.T) {
 
