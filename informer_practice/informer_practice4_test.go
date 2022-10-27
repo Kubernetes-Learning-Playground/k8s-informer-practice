@@ -11,6 +11,7 @@ import (
 	"testing"
 )
 
+// 创建控制器
 
 func newStore() cache.Store {
 	metaFunc := cache.MetaNamespaceKeyFunc
