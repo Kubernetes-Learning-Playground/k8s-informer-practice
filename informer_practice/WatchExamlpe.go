@@ -11,7 +11,7 @@ import (
 type WatchExamlpe struct {
 	// 外部给的
 	lw *cache.ListWatch	// list-watcher
-	objType runtime.Object	// k8s资源总称
+	objType runtime.Object	// k8s资源总称，监听对象类型
 	h cache.ResourceEventHandler	// 包含三种事件，add update delete
 
 	// 构建函数内部生成
@@ -48,7 +48,7 @@ func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.R
 
 func (wd *WatchExamlpe) Run() {
 
-	//
+
 	ch := make(chan struct{})
 	go func() {
 		// 启动run

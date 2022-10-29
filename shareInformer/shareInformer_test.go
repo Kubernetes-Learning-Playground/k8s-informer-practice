@@ -17,7 +17,7 @@ func TestShareInformer(t *testing.T) {
 	client := src.InitClient()
 
 	// 两个方法区别
-	//fact := informers.NewSharedInformerFactory(client, time.Minute)
+	//fact := informers.NewSharedInformerFactory(client, time.Minute)	// 这个会监听所有namespace
 	fact := informers.NewSharedInformerFactoryWithOptions(client, time.Minute, informers.WithNamespace("default"))
 
 
@@ -38,7 +38,8 @@ func TestShareInformer(t *testing.T) {
 
 	configInformer.Informer().AddEventHandler(&ConfigMapHandler{})
 
-
+	// 也可以用Informer().Run(wait.NeverStop)
+	//configInformer.Informer().Run(wait.NeverStop)
 	fact.Start(wait.NeverStop)
 
 	select {} // 如果不是用gin 就需要永远阻塞

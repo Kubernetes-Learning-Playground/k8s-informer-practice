@@ -146,21 +146,21 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 		informer,_ := fact.ForResource(*gvr)
 
 		//初始化都是nil
-		var labelKeys,annotationKeys []string = nil,nil
+		var labelKeys, annotationKeys []string = nil,nil
 		var list []string//最终结果
-		if c.Query("labels")!=""{
+		if c.Query("labels") != "" {
 			labelKeys, _ = informer.Informer().GetIndexer().
 				IndexKeys("labels",c.Query("labels"))
 		}
-		if c.Query("annotations")!=""{
+		if c.Query("annotations") != "" {
 			annotationKeys, _ = informer.Informer().GetIndexer().
 				IndexKeys("annotations",c.Query("annotations"))
 		}
-		if labelKeys!=nil && annotationKeys!=nil{
+		if labelKeys != nil && annotationKeys != nil {
 			list = factory.Intersect(labelKeys, annotationKeys)//求交集
-		}else if labelKeys!=nil{
+		}else if labelKeys != nil {
 			list = labelKeys
-		}else{
+		} else {
 			list = annotationKeys
 		}
 

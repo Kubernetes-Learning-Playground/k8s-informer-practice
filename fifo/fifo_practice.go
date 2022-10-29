@@ -56,7 +56,7 @@ func main() {
 		for _, delta := range obj.(cache.Deltas) {
 			fmt.Println(delta.Type, ":", delta.Object.(pod).Name, "value:", delta.Object.(pod).Value) // 断言为pod，因为只有pod
 
-			// 这里进行回调
+			// 这里进行回调，区分不同事件。
 			switch delta.Type {
 			case cache.Added:
 				fmt.Println("执行新增回调")

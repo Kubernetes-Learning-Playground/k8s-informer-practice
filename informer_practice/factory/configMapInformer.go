@@ -21,9 +21,9 @@ func NewMyFactory() *MyFactory {
 
 func Watch(fact informers.SharedInformerFactory, groupVersion, resource string) cache.SharedIndexInformer {
 	gv := strings.Split(groupVersion,"/")
-	var group,version string
+	var group, version string
 
-	if len(gv)==1 {
+	if len(gv) == 1 {
 		group = ""
 		version = groupVersion
 	} else {

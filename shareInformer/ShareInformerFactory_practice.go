@@ -55,6 +55,34 @@ func (f *MyFactory) DeploymentInformer() cache.SharedIndexInformer {
 
 }
 
+func (f *MyFactory) ConfigMapInformer() cache.SharedIndexInformer {
+	if informer, ok := f.informers[reflect.TypeOf(&v1.ConfigMap{})]; ok {
+		return informer
+	}
+
+	configmapLW := cache.NewListWatchFromClient(f.client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything())
+	indexers := cache.Indexers{
+		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc,
+	}
+	informer := cache.NewSharedIndexInformer(configmapLW, &v1.ConfigMap{}, 0, indexers)
+	f.informers[reflect.TypeOf(&v1.ConfigMap{})] = informer
+	return informer
+}
+
+func (f *MyFactory) EventInformer() cache.SharedIndexInformer {
+	if informer, ok := f.informers[reflect.TypeOf(&v1.Event{})]; ok {
+		return informer
+	}
+
+	eventLW := cache.NewListWatchFromClient(f.client.CoreV1().RESTClient(), "events", "default", fields.Everything())
+	indexers := cache.Indexers{
+		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc,
+	}
+	informer := cache.NewSharedIndexInformer(eventLW, &v1.Event{}, 0, indexers)
+	f.informers[reflect.TypeOf(&v1.Event{})] = informer
+	return informer
+}
+
 
 
 
@@ -70,6 +98,7 @@ func (f *MyFactory) Start() {
 func main() {
 	client := src.InitClient()
 	fact := NewMyFactory(client)
+
 	// 注册回调函数
 	fact.PodInformer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		// 注册函数
@@ -96,6 +125,26 @@ func main() {
 			fmt.Println("删除的deployment：",obj.(*v11.Deployment).Name)
 		},
 	})
+	
+	fact.ConfigMapInformer().AddEventHandler(cache.ResourceEventHandlerFuncs{
+		AddFunc: func(obj interface{}) {
+			fmt.Println("新增的configmap：",obj.(*v1.ConfigMap).Name)
+		},
+		UpdateFunc: func(oldObj, newObj interface{}) {
+			fmt.Println("更新的configmap：", oldObj.(*v1.ConfigMap).Name, newObj.(*v1.ConfigMap).Name)
+
+		},
+		DeleteFunc: func(obj interface{}) {
+			fmt.Println("删除的configmap：",obj.(*v1.ConfigMap).Name)
+		},
+	})
+
+	fact.EventInformer().AddEventHandler(cache.ResourceEventHandlerFuncs{
+		AddFunc: func(obj interface{}) {
+			fmt.Println("新增的event：",obj.(*v1.Event).Name)
+			fmt.Println("新增的event Type", obj.(*v1.Event).Type)
+		},
+	})
 
 
 	fact.Start()
@@ -108,7 +157,7 @@ func main() {
 	}()
 
 	fmt.Println("启动服务器")
-
+	// TODO: 增加接口回调的结果展示
 	r.GET("/pod", func(c *gin.Context) {
 		fact.PodInformer().GetIndexer().List()
 		//c.JSON(200, fact.PodInformer().GetIndexer().IndexKeys(cache.NamespaceIndex, "default"))
@@ -116,6 +165,14 @@ func main() {
 
 	r.GET("/deployment", func(c *gin.Context) {
 		fact.DeploymentInformer().GetIndexer().List()
+	})
+
+	r.GET("/configmap", func(c *gin.Context) {
+		fact.ConfigMapInformer().GetIndexer().List()
+	})
+
+	r.GET("/event", func(c *gin.Context) {
+		fact.EventInformer().GetIndexer().List()
 	})
 
 
