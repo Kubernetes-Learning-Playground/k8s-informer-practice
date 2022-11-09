@@ -50,7 +50,7 @@ func (wd *WatchExamlpe) Run() {
 
 
 	ch := make(chan struct{})
-	go func() {
+	 go func() {
 		// 启动run
 		wd.reflector.Run(ch)
 	}()

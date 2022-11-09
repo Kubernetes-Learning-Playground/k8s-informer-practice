@@ -12,6 +12,12 @@ import (
 	"time"
 )
 
+/*
+	sharedInformer or sharedIndexInformer
+	1. 支持多个eventHandler
+	2. 内置一个indexer 缓存
+ */
+
 func TestShareInformer(t *testing.T) {
 
 	client := src.InitClient()

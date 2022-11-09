@@ -9,6 +9,7 @@ import (
 )
 
 /*
+	(单个资源使用多个回调方式) (多个资源，多个回调方式多种监听)
 	SharedInformer vs. SharedInforemerFactory
 	1. 支持多个EventHandler，可理解为多个消费者。
 	2. 内置一个Indexer(有个threadSafeMap的struct实现)

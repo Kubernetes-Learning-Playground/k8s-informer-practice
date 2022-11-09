@@ -83,6 +83,19 @@ func (f *MyFactory) EventInformer() cache.SharedIndexInformer {
 	return informer
 }
 
+func (f *MyFactory) ServiceInformer() cache.SharedIndexInformer {
+	if informer, ok := f.informers[reflect.TypeOf(&v1.Service{})]; ok {
+		return informer
+	}
+	serviceLW := cache.NewListWatchFromClient(f.client.CoreV1().RESTClient(), "services", "default", fields.Everything())
+	indexers := cache.Indexers{
+		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc,
+	}
+	informer := cache.NewSharedIndexInformer(serviceLW, &v1.Service{}, 0, indexers)
+	f.informers[reflect.TypeOf(&v1.Service{})] = informer
+	return informer
+}
+
 
 
 
@@ -143,6 +156,24 @@ func main() {
 		AddFunc: func(obj interface{}) {
 			fmt.Println("新增的event：",obj.(*v1.Event).Name)
 			fmt.Println("新增的event Type", obj.(*v1.Event).Type)
+		},
+	})
+
+	fact.ServiceInformer().AddEventHandler(cache.ResourceEventHandlerFuncs{
+		AddFunc: func(obj interface{}) {
+			fmt.Println("新增的service：",obj.(*v1.Service).Name)
+		},
+		UpdateFunc: func(oldObj, newObj interface{}) {
+			fmt.Println("更新的service：", oldObj.(*v1.Service).Name, newObj.(*v1.Service).Name)
+			oldService := oldObj.(*v1.Service)
+			newService := newObj.(*v1.Service)
+			if oldService.Spec.Ports[0] != newService.Spec.Ports[0] {
+				fmt.Printf("service端口有变化，由%d变为%d",oldService.Spec.Ports[0], newService.Spec.Ports[0] )
+			}
+
+		},
+		DeleteFunc: func(obj interface{}) {
+			fmt.Println("删除的service：",obj.(*v1.Service).Name)
 		},
 	})
 

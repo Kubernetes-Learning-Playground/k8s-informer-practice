@@ -14,15 +14,16 @@ func main() {
 
 	client := src.InitClient()
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc)	// 缓存
-	podListWatcher := cache.NewListWatchFromClient(
+	podListWatcher  := cache.NewListWatchFromClient(
 		client.CoreV1().RESTClient(),
 		"pods",
 		"dafault",
 		fields.Everything())
+
 	// 默认下，只有支持一个回调函数。
 	df := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{
 		KeyFunction: cache.MetaNamespaceKeyFunc,
-		KnownObjects: store,	// 会存内容到缓存中，如果没有设置就delete不会有事件发生
+		KnownObjects: store,	// 会存内容到缓存中，如果没有设置就delete不会有事件发生,就是没有本地缓存
 	})
 
 	/*
