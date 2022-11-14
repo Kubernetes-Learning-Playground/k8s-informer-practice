@@ -8,29 +8,38 @@ import (
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/tools/cache"
 	"testing"
+	"time"
 )
 
 func TestShareInformer3(t *testing.T) {
-	//
+	// 客户端
 	client := src.InitClient()
-
-	informerFactory := informers.NewSharedInformerFactoryWithOptions(client, 0, informers.WithNamespace("default"))
+	// 对deployment 监听
+	informerFactory := informers.NewSharedInformerFactoryWithOptions(client, time.Second * 20, informers.WithNamespace("default"))
 	deploymentInformer := informerFactory.Apps().V1().Deployments()
-	informer := deploymentInformer.Informer()
-	deploymentList := deploymentInformer.Lister()
 
+	// 创建informer
+	informer := deploymentInformer.Informer()
+	// 如果有add update delete 事件，就会回调下面的函数。
 	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: onAdd,
 		UpdateFunc: onUpdate,
 		DeleteFunc: onDelete,
 	})
 
+	// 创建Lister
+	deploymentList := deploymentInformer.Lister()
+
+
+
 	stopC := make(chan struct{})
 	defer close(stopC)
-
+	// 启动 informer List&Watch。
 	informerFactory.Start(stopC)
+	// 等待所有缓存被同步
 	informerFactory.WaitForCacheSync(stopC)
 
+	// 从"本地缓存"获取 default 所有 deployment
 	deployments, err := deploymentList.Deployments("default").List(labels.Everything())
 	if err != nil {
 		fmt.Print(err)
