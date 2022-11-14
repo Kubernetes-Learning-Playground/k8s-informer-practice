@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"k8s.io/client-go/dynamic"
 )
 
 // 配置文件
@@ -32,6 +33,15 @@ func K8sRestConfig() *rest.Config {
 		log.Panic(err.Error())
 	}
 
+	//var config *rest.Config
+	//// 使用 ServiceAccount 创建集群配置（InCluster模式）
+	//if config, err := rest.InClusterConfig(); err != nil {
+	//	// 使用 KubeConfig 文件创建集群配置
+	//	if config, err = clientcmd.BuildConfigFromFlags("", *kubeConfig); err != nil {
+	//		log.Panic(err.Error())
+	//	}
+	//}
+
 
 
 	return config
@@ -45,6 +55,14 @@ func InitClient() *kubernetes.Clientset {
 	}
 
 	return c
+}
+
+func InitDynamicClient() dynamic.Interface {
+	d, err := dynamic.NewForConfig(K8sRestConfig())
+	if err != nil {
+		log.Fatal(err)
+	}
+	return d
 }
 
 func HomeDir() string {
