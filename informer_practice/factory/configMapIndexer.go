@@ -28,18 +28,18 @@ func AnnotationsIndexFunc(obj interface{}) ([]string, error) {
 	if err != nil {
 		return []string{""}, fmt.Errorf("object has no meta: %v", err)
 	}
-	ret:=[]string{}
+	ret := []string{}
 	if  meta.GetAnnotations()!=nil{
-		for k,v:=range meta.GetAnnotations(){
+		for k,v := range meta.GetAnnotations(){
 			//  best:true
-			ret=append(ret,fmt.Sprintf("%s:%s",k,v))
+			ret = append(ret,fmt.Sprintf("%s:%s",k,v))
 		}
 	}
 
 	return ret, nil
 }
 
-// Intersect 求切片的交集   select xxwhere a=xx and a=xx
+// Intersect求切片的交集   select xx where a=xx and a=xx
 func Intersect(slice1, slice2 []string) []string {
 	m := make(map[string]struct{})
 	nn := make([]string, 0)
@@ -47,7 +47,7 @@ func Intersect(slice1, slice2 []string) []string {
 		m[v1] = struct{}{}
 	}
 	for _, v2 := range slice2 {
-		if _,ok := m[v2];ok  {
+		if _, ok := m[v2];ok  {
 			nn = append(nn, v2)
 		}
 	}
