@@ -33,8 +33,9 @@ func (p PodHandler) OnDelete(obj interface{}) {
 
 
 type MySharedInformer struct {
+	// 通知
 	processor *sharedProcessor
-
+	// informer 三件套。
 	reflector *Reflector
 	fifo *DeltaFIFO
 	store Store
@@ -63,7 +64,7 @@ func NewMySharedInformer(lw *ListWatch, objType runtime.Object, indexer Indexer)
 
 // input：接口对象： 实现 OnAdd OnUpdate OnDelete方法的对象
 func (msi *MySharedInformer) addEventHandler(handler ResourceEventHandler) {
-	lis := newProcessListener(handler, 0, 0, time.Now(), 1024)
+	lis := newProcessListener(handler, 0, 0, time.Now(), initialBufferSize)
 	msi.processor.addListener(lis)
 }
 
@@ -111,8 +112,8 @@ func (msi *MySharedInformer) start(ch <-chan struct{}) {
 }
 
 
-// MetaLableIndexFunc 自定义一个方法 模拟MetaNamespaceIndexFunc用的！
-func MetaLableIndexFunc(obj interface{}) ([]string, error) {
+// MetaLabelIndexFunc 自定义一个方法 模拟MetaNamespaceIndexFunc用的！
+func MetaLabelIndexFunc(obj interface{}) ([]string, error) {
 	meta, err := meta.Accessor(obj)
 	if err != nil {
 		return []string{""}, fmt.Errorf("object has no meta: %v", err)
@@ -175,8 +176,8 @@ func Test() {
 
 	// 结合gin框架
 
-	indexers := Indexers{"app": MetaLableIndexFunc}
-	myindex := NewIndexer(DeletionHandlingMetaNamespaceKeyFunc, indexers)
+	indexers := Indexers{"app": MetaLabelIndexFunc}
+	myindex := NewIndexer(DeletionHandlingMetaNamespaceKeyFunc, indexers) // 传入一个补丁函数，避免deletion时发生问题
 
 	go func() {
 		r := gin.New()

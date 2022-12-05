@@ -26,7 +26,7 @@ func TestConfigMapInformer(t *testing.T) {
 	//
 	//informer.Run(wait.NeverStop)
 
-	// 使用sharedInformer 可以调用多个handler回调函数
+	// 使用sharedInformer 可以在单一资源中  调用多个handler回调函数
 	shareInformer := cache.NewSharedInformer(listWatcher, &v1.ConfigMap{}, 0)
 	shareInformer.AddEventHandler(&ConfigMapHandler{})
 	shareInformer.AddEventHandler(&ConfigMap2Handler{})

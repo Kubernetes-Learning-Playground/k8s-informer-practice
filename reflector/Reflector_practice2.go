@@ -46,7 +46,7 @@ func main() {
 		_, _ = df.Pop(func(obj interface{}) error {
 			for _, delta := range obj.(cache.Deltas) {
 
-				// 遍历后需要判断回调类型，并加入store中，不然无法取到事件。
+				// 遍历后需要判断回调类型，并加入store(缓存)中，不然无法取到事件。
 				switch delta.Type {
 				case cache.Added, cache.Sync:
 					_ = store.Add(delta.Object)
