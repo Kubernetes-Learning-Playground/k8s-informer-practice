@@ -7,8 +7,8 @@ import (
 
 // 实现简单Informer机制
 
-// WatchExamlpe 对象
-type WatchExamlpe struct {
+// WatchExample 对象
+type WatchExample struct {
 	// 外部给的
 	lw *cache.ListWatch	// list-watcher
 	objType runtime.Object	// k8s资源总称，监听对象类型
@@ -21,7 +21,7 @@ type WatchExamlpe struct {
 }
 
 // NewWatchDog 构建函数，输入参数：lw:list-watch objType:资源种类 h:资源handler
-func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchExamlpe {
+func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchExample {
 
 	// 新建Store
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
@@ -35,7 +35,7 @@ func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.R
 	// 新建Reflector
 	rf := cache.NewReflector(lw, objType, fifo, 0)
 
-	return &WatchExamlpe{
+	return &WatchExample{
 		lw: lw,	// list-watch
 		objType: objType,	// 资源
 		h: h,	// 资源的handler
@@ -46,7 +46,7 @@ func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.R
 
 }
 
-func (wd *WatchExamlpe) Run() {
+func (wd *WatchExample) Run() {
 
 
 	ch := make(chan struct{})
@@ -55,7 +55,7 @@ func (wd *WatchExamlpe) Run() {
 		wd.reflector.Run(ch)
 	}()
 
-	// 不断从队列取出来
+	// 不断从队列取出来，并区分事件分类，并放入store中
 	for {
 		// 从fifo队列中 pop出来
 		_, _ = wd.fifo.Pop(func(obj interface{}) error {

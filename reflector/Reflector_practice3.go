@@ -39,6 +39,7 @@ func newQueue(store cache.Store) cache.Queue {
 }
 
 func newListWatcher(groupVersionResource string, namespace string) cache.ListerWatcher {
+	// 用来分api路径
 	res := strings.Split(groupVersionResource, "/")
 	clientSet := src.InitClient()
 
@@ -71,11 +72,13 @@ func newObjReflector(groupVersionResource string, namespace string, obj v1.Pod, 
 }
 
 func main() {
+	// 创建本地缓存
 	store := newStore()
+	// 创建delta fifo
 	queue := newQueue(store)
+	// 监听资源可以自己改变。 ex: /apps/deployments, appsv1.Deployment{}
 	groupVersionResource := "/pods"
 	reflector := newObjReflector(groupVersionResource, "default", v1.Pod{}, queue)
-	//reflector := newObjReflector(&v1.Pod{}, queue)
 
 	stopCh := make(chan struct{})
 	defer close(stopCh)
@@ -88,6 +91,7 @@ func main() {
 		for _, d := range obj.(cache.Deltas) {
 			switch d.Type {
 			case cache.Sync, cache.Added, cache.Updated:
+				// 判断是否本地缓存里有，区分add update方法
 				if _, exists, err := store.Get(d.Object); err == nil && exists {
 					if err := store.Update(d.Object); err != nil {
 						return err
@@ -97,6 +101,7 @@ func main() {
 						return err
 					}
 				}
+				// delete方法，直接在本地缓存找到后删除
 			case cache.Deleted:
 				if err := store.Delete(d.Object); err != nil {
 					return err

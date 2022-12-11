@@ -29,7 +29,7 @@ func (p PodHandler) OnDelete(obj interface{}) {
 }
 
 // 加入资源handler
-var _ cache.ResourceEventHandler = &PodHandler{}
+var _ cache.ResourceEventHandler = &PodHandler{} // 查看是否实现此接口
 
 func TestWatchExamlpe(t *testing.T) {
 	// 建立client
