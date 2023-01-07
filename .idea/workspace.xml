@@ -531,6 +531,7 @@
       <change beforePath="$PROJECT_DIR$/../helloproto/helloworld.proto" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../helloproto/student.pb.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../helloproto/student.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shareInformer/shareInformer_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/shareInformer/shareInformer_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../project_gRPC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project_gRPC/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../project_by_myself/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../project_by_myself/discover/discover_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/discover/discover_client.go" afterDir="false" />

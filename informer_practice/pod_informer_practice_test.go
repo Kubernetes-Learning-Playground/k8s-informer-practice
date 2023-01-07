@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"k8s-informer-controller-practice/src"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/tools/cache"
 	"log"
@@ -43,5 +44,8 @@ func TestPodInformer(t *testing.T) {
 	informer.AddEventHandler(podHandler)	// 加入handler！
 	fmt.Println("pod informer start!")
 	informer.Run(stopC)
+	if !cache.WaitForCacheSync(wait.NeverStop, informer.HasSynced) {
+		return
+	}
 
 }
