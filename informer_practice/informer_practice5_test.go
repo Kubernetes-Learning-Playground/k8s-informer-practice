@@ -1,6 +1,7 @@
 package informer_practice
 
 import (
+	"fmt"
 	"k8s-informer-controller-practice/src"
 	v1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/fields"
@@ -8,7 +9,6 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"strings"
 	"testing"
-	"fmt"
 )
 
 func newInformerListWatcher(groupVersionResource string, namespace string) cache.ListerWatcher {

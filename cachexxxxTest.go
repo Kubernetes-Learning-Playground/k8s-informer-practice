@@ -1,7 +1,7 @@
 package main
 
-import "k8s-informer-controller-practice/cachexxx"
+import "k8s-informer-controller-practice/cache_copy"
 
 func main() {
-	cachexxx.Test()
+	cache_copy.Test()
 }

@@ -28,6 +28,7 @@ func podKeyFunc(obj interface{}) (string, error) {
 }
 
 // 简单操作delta fifo队列。
+// 放入对象可以是自己封装的方法，但是要确定好keyFunc。
 
 func main() {
 
@@ -51,7 +52,7 @@ func main() {
 	// 4.push到fifo队列 delete事件
 	_ = df.Delete(pod1)
 
-	// 从fifo中pop出来。当中有个回调函数，作用是分别不同事件所有做的不同回调方法
+	// 从fifo中pop出来。当中有个回调函数，作用是分别不同事件所有做的不同回调方法，只取出一个key的元素
 	_, _ = df.Pop(func(obj interface{}) error {
 		for _, delta := range obj.(cache.Deltas) {
 			fmt.Println(delta.Type, ":", delta.Object.(pod).Name, "value:", delta.Object.(pod).Value) // 断言为pod，因为只有pod

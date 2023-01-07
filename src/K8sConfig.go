@@ -13,11 +13,6 @@ import (
 
 // 配置文件
 func K8sRestConfig() *rest.Config {
-	//// 需要注意这里的config文件目录。
-	//config, err := clientcmd.BuildConfigFromFlags("", "config")
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
 
 	var kubeConfig *string
 
@@ -32,17 +27,6 @@ func K8sRestConfig() *rest.Config {
 	if err != nil {
 		log.Panic(err.Error())
 	}
-
-	//var config *rest.Config
-	//// 使用 ServiceAccount 创建集群配置（InCluster模式）
-	//if config, err := rest.InClusterConfig(); err != nil {
-	//	// 使用 KubeConfig 文件创建集群配置
-	//	if config, err = clientcmd.BuildConfigFromFlags("", *kubeConfig); err != nil {
-	//		log.Panic(err.Error())
-	//	}
-	//}
-
-
 
 	return config
 }
