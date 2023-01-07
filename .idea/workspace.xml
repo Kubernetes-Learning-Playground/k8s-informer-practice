@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc93775f-3851-4c2b-aab2-26e4323880aa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.idea/golanglearning.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../awesomeProject/.idea/awesomeProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo/.idea/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../go_basic/for_practice_goroutine/.idea/for_practice_goroutine.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/.idea/go_by_example.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../go_basic/serve_practice/.idea/serve_practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../go_basic/try/.idea/try.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../learing_k8s/cncamp/.idea/cncamp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mrico_service/.idea/mrico_service.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../new_practice/.idea/new_practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/new_project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RPC-myself/.idea/RPC-myself.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/.idea/ServiceDiscoveryByETCD.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/client/.idea/client.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/client/client_main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/protocol.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/server/.idea/server.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/server/etcd.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/server/server_main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ServiceDiscoveryByETCD/server/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/.idea/aa.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/lib/cachecmd.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/lib/helper.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/lib/informer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/lib/initplugin.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/lib/listcmd.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/lib/promptcmd.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../aa/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache/.idea/cache.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/.idea/crontask.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/cron/interface.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/cron/model.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/cron/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/task_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/tasks/interface.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/tasks/interfaceFunc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../crontask/tasks/task.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../etcd-client-practice/.idea/etcd-client-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../etcd-practice/.idea/etcd-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../etcd-practice/client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../etcd-practice/lib/client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../etcd-practice/lib/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../etcd-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/.idea/for-gong-zhong-hao.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/.idea/BestPractices.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/Testing-practice/network1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/Testing-practice/network1_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/Testing-practice/split.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/Testing-practice/split_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/.idea/Concurrent-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/Go-gorm-practice/.idea/Go-gorm-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/inject-practice/demo1-NoUseInject_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/inject-practice/demo1_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/inject-practice/model/model.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/.idea/gin-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/common/middlewares.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/data/Getter/UserGetter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/db/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/db/config.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/db/db_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/db/mysqlinit.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/handlers/CommonHandler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/handlers/UserHandler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/models/UserModel/attrs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/models/UserModel/model.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/result/ErrorResult.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/test/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/validators/Common.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-practice/src/validators/UserName.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/.idea/gin-with-limiting.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/src/Bucket.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gin-with-limiting/src/limit.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../github-action-docker/.idea/github-action-docker.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../github-action-docker/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../github-action-docker/client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../github-action-docker/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../go-github-actions/.idea/go-github-actions.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../go-github-actions/hello/hello.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../go-github-actions/hello/hello_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../go-github-actions/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../go_training/.idea/go_training.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/.idea/golang-websocket.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/models/IModel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/models/PingModel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/models/PodModel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/models/WsResponse.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/core/ClientMap.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/core/Common.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/core/WsClient.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/core/WsCommand.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/core/WsMessage.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/handlers/Echo.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/components/table.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/core/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/core/router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/core/vue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/core/vueloader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/core/vuerouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/core/ws.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../golang-websocket/src/htmls/vue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice-client/.idea/grpc-practice-client.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice-client/client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice-client/services/Product.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice-client/services/Product_grpc.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice/.idea/grpc-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice/httpserver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice/pbfiles/Product.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../grpc-practice/services/ProductService.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../iam/.idea/iam.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-AdmissionControllers-practice/.idea/k8s-AdmissionControllers-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-AdmissionControllers-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-AdmissionControllers-practice/src/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-AdmissionControllers-practice/src/convert.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-AdmissionControllers-practice/src/pods.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-AdmissionControllers-practice/src/pods_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-AdmissionControllers-practice/src/scheme.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-Management-System/.idea/k8s-Management-System.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-Management-System/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-Management-System/src/controllers/deploymentCtl.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-Management-System/src/controllers/podCtl.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/fakeClientTest/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/fakeClientTest/fakeClient.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/fakeClientTest/fakeClient_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/fakeClientTest/jsonPatch.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/image/serializer.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/initClient/clientSet.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/serializer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-api-practice/serializer/serializer_practice_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/.idea/k8s-client-go-api-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/deployment/DetailUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/deployment/commonUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/deployment/deploymentUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/deployment/handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/deployment/list.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/deployment/model.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/html/common/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/html/common/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/html/deployment/deployment_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/html/deployment/deployment_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/initClient/clientSet.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/myproxy/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/myproxy/myproxy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/proxy_request_try.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/static/css/bulma.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/static/css/common.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/static/jq3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/test/ListService_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/util/CommonData.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/util/error_handle.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-controller-runtime-practice/.idea/k8s-controller-runtime-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-controller-runtime-practice/tests/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice-easy/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice-easy/test/redis.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/.idea/k8s-operator-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/app.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/pkg/config/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/pkg/config/routebuilder.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/pkg/config/rules.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/pkg/filters/add_request_header.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/pkg/filters/add_response_header.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/pkg/filters/common.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/pkg/filters/rewrite.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/test/match_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/test/prefix_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/test/server_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/testserver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-practice-namespace/.idea/k8s-practice-namespace.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-practice-namespace/app1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-practice-namespace/app2.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-practice-namespace/deploy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-scheduler-plugins-practice/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-scheduler-plugins-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-scheduler-plugins-practice/src/test-pod-maxNum-scheduler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-scheduler-plugins-practice/yaml/test-scheduling.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s-webhook-practice/src/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/src/mutate.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/src/tls_server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/src/validate.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/yaml/deploy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8sWebhookPractice/yaml/test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_aggregator_apiserver/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_aggregator_apiserver/certs/aaserver.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_aggregator_apiserver/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_aggregator_apiserver/yaml/api.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_aggregator_apiserver/yaml/deploy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/.idea/awesomeProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/.idea/golang_k8s_practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/deployment/client_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/deployment/clientset.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/deployment/create.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/deployment/delete.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/deployment/get.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/deployment/update.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/deployment/watch.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/other_practice/ClientSet_practice.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/other_practice/RestClient_practice.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/other_practice/connect_k8s_apiserver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_client_go_practice/golang_k8s_practice/other_practice/try.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../k8s_practice/.idea/k8s_practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kubectl_plugin_develop/.idea/kubectl_plugin_develop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kubectl_plugin_develop/initClient/ClientSet.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kubectl_plugin_develop/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kubectl_plugin_develop/test/test_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/.idea/mysql-practice-by-gorm.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/db_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/dbinit/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/dbinit/config.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/dbinit/mysqlinit.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/getData/getdata.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/getData/getdata_by_pipeline_mode.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/getData/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/pipeline/data.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/pipeline/pipeline.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mysql-practice-by-gorm/pipeline/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../operator-develop/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../operator-develop/controllers/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../operator-develop/controllers/resource.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../operator-redis/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../operator-redis/aa.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../operator-redis/controllers/deployment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../operator-redis/controllers/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_for_practice/.idea/project_for_practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/.idea/redis-practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/job.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/jobtest/db/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/jobtest/db/config.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/jobtest/db/db_init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/jobtest/myjob.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../redis-practice/src/locker.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test_myweb/.idea/test_myweb.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test_myweb/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/.idea/try.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/core/deployment_init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/core/event_init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/core/pod_init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/core/rs_init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/debug/handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/CommonUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/CreateUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/DeploymentModel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/DetailUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/ListUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/PodUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/deploymentutil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/deployment/handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/html/common/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/html/common/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/html/deployment/deployment_create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/html/deployment/deployment_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/html/deployment/deployment_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/lib/ClientInit.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/lib/CommonData.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/lib/WebUtil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/static/css/bulma.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/static/css/common.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/static/jq3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/static/jt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/static/md5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/cmtest.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/cmuser.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/crd/crd.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/crd/crddep.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/deployments/auth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/deployments/html.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/deployments/myalpine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/deployments/mycm.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/deployments/myngx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/deployments/myngx2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/deployments/myngx_bak.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/hpa/ngx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/hpa/web1hpa.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/nodeaff/ngx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/pods/myngx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/pv/local-pv.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/pv/ngx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/pv/pvc.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/huawei/pv/storageclass.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/myalpine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/nginx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/test2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/cert/wx.jtthink.com_chain.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/cert/wx.jtthink.com_key.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/deptdep.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/depts.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/lb.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/middlewares.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/mirror.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/mycert/backend.cert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/mycert/backend.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/mycert/frontend.cert" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/mycert/frontend.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/mygrpc.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/ngx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/redis.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/tk1.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../try/yamls/tk/tk2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../project_by_myself/.idea/project_by_myself.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GOMODULE/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../GOMODULE/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../awesomeProject/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../awesomeProject/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../awesomeProject/file1" beforeDir="false" afterPath="$PROJECT_DIR$/../../awesomeProject/file1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../awesomeProject/file2.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../../awesomeProject/file2.tar.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo/calc/calc.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo/calc/calc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demo/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/.idea/go_basic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/.idea/go_basic.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Design pattern/Singleton_pattern/singleton.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Design pattern/Singleton_pattern/singleton.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Design pattern/builder_pattern/builder_pattern.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Design pattern/builder_pattern/builder_pattern.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Design pattern/factory_pattern/factory_pattern.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Design pattern/factory_pattern/factory_pattern.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Design pattern/prototype_pattern/prototype.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Design pattern/prototype_pattern/prototype.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Design pattern/sample_factory_pattern/factory_pattern.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Design pattern/sample_factory_pattern/factory_pattern.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Design pattern/strategy_pattern/strategy.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Design pattern/strategy_pattern/strategy.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Design pattern/template_pattern/template.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Design pattern/template_pattern/template.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Simple-barrier-concurrency-mode/barrier mode.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Simple-barrier-concurrency-mode/barrier mode.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Simple-circuit-breaker/Simple-circuit-breaker/circuit_breaker.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Simple-circuit-breaker/Simple-circuit-breaker/circuit_breaker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/Simple-circuit-breaker/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/Simple-circuit-breaker/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/basic_data_structure/test_map_use.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/basic_data_structure/test_map_use.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/tmp/dat" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/tmp/dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_Ticker.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_Ticker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_Timer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_Timer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_array.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_array.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel3.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel3.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel4.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel4.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel5.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel5.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel6.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel6.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel7.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel7.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel8.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_channel8.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_command_parm.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_command_parm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_command_parm1.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_command_parm1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_debug.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_debug.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_defer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_defer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_dir.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_dir.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_dir1.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_dir1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_error.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_error.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_file.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_for_consumer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_for_consumer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_func2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_func2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_goroutine.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_goroutine.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_if_else.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_if_else.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_interface.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_json.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_json.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_method.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_method.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_mutex.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_mutex.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_panic.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_panic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_range.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_range.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_read_file.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_read_file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_recover.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_recover.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_signal.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_signal.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_singlefilght.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_singlefilght.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_slice.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_slice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_sort.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_sort.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_sort2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_sort2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_string_func.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_string_func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_string_rune.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_string_rune.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_struct.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_struct.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_switch.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_switch.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_text_template.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_text_template.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_timeout_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_timeout_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_waitgroup.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_waitgroup.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_workpool.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_workpool.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_write_file.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_write_file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_by_example/try_xml.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_by_example/try_xml.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_core_36/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_core_36/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_core_36/Golang_Puzzlers" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_core_36/Golang_Puzzlers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_record/map1.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_record/map1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_record/range1.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_record/range1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/go_record/slice1.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/go_record/slice1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/heartbeat-practice/heart-ping.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/heartbeat-practice/heart-ping.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/learn_gjson/example.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/learn_gjson/example.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/object_oriented_programming/interface_try2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/object_oriented_programming/interface_try2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/practice_for_http_log/handle_with_http_log.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/practice_for_http_log/handle_with_http_log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/practice_set_from_map/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/practice_set_from_map/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/practice_set_from_map/practice_set_from_map/use_map_build_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/practice_set_from_map/practice_set_from_map/use_map_build_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/reflect_test/test_reflect.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/reflect_test/test_reflect.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/remove_element/RemoveDuplicates.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/remove_element/RemoveDuplicates.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/test_pair.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/test_pair.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/try/func_try.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/try/func_try.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/try/stack-as-package.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/try/stack-as-package.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/try/try_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/try/try_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/try/try_string.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/try/try_string.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../go_basic/try/try_struct.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../go_basic/try/try_struct.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mrico_service/gRPC_pretice/aaa.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../mrico_service/gRPC_pretice/aaa.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RPC-myself/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../RPC-myself/client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RPC-myself/client/options.go" beforeDir="false" afterPath="$PROJECT_DIR$/../RPC-myself/client/options.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RPC-myself/options.go" beforeDir="false" afterPath="$PROJECT_DIR$/../RPC-myself/options.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RPC-myself/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/../RPC-myself/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RPC-myself/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../RPC-myself/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cache/geecache/consistenhash/consistenhash.go" beforeDir="false" afterPath="$PROJECT_DIR$/../cache/geecache/consistenhash/consistenhash.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cache/geecache/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/../cache/geecache/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cache/server" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_distributed_lock_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_distributed_lock_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_init_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_init_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_kv_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_kv_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_lease_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_lease_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_watch_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/../etcd-client-practice/etcd_client_watch_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileBasicOperation.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileBasicOperation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileRead.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileRead.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileUnpackPack.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileUnpackPack.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileWrite.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/DoSomethingWithFile/FileWrite.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/different-layer-error-handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/different-layer-error-handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/errorHandle.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/errorHandle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/errorHandle2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/errorHandle2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/errorgroup-practice.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/ErrorBestPractices/errorgroup-practice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/io-package-learning/example-io.Pipe.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/io-package-learning/example-io.Pipe.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/io-package-learning/example.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/io-package-learning/example.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/io-package-learning/input-try" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/io-package-learning/input-try" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/json-handle-learning/a.json" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/json-handle-learning/a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/json-handle-learning/json-practice.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/json-handle-learning/json-practice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/strconv-learning/example1.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/strconv-learning/example1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/strconv-learning/example2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/BestPractices/strconv-learning/example2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/Brief-Introduction-to-Concurrency-Control.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/ContextMechanism.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/Sequential-execute-goroutine.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/about-select-deadlock.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/async/async.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/async/async.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/best-practice-for-goroutine.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/chan-practice.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/chan-practice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/chan-practice2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/chan-practice2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/select-practice.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/select-practice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/two-layer-chan.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/chan-practice/two-layer-chan.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/channel-mode.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/channel_talk_more.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/cron-task.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/discuss-goroutine-quanity/discuss-goroutine-quanity.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/discuss-goroutine-quanity/discuss-goroutine-quanity.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/errgroup-pracitce.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/goroutine-error-chan.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/pool-practice.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/pool-practice2.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/select-timeout-practice.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/some-ways-to-build-timeout-mechanism.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/use-goroutine-consume-faster.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/use-waitgroup-limit-goroutine-count.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Concurrent-practice/watch-gracefully-exit-practice.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/7-mode-for-goroutine.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/7-mode-for-goroutine.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/computer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/computer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/epson.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/epson.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/hp.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/hp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/mac.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/mac.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/printer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/printer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/window.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/BridgePattern/window.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/cashier.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/cashier.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/department.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/department.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/doctor.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/doctor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/medical.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/medical.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/patient.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/patient.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/reception.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ChainofResponsibilityDesignPattern/reception.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/cheeseTopping.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/cheeseTopping.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/pizza.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/pizza.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/tomatoTopping.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/tomatoTopping.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/veggieMania.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/DecoratorPattern/veggieMania.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/iterator.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/iterator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/userCollection.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/userCollection.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/userIterator.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/IteratorPattern/userIterator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ProxyPattern/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ProxyPattern/application.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ProxyPattern/nginx.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/ProxyPattern/nginx.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/Strategy1.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/Strategy1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/Strategy2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/Strategy2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/Strategy3.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/Strategy3.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/cache.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/cache.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/strategy.md" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/StrategyPatterns/strategy.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/SubjectObjectPattern/customer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/SubjectObjectPattern/customer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/SubjectObjectPattern/observer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/SubjectObjectPattern/observer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/SubjectObjectPattern/subject.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/SubjectObjectPattern/subject.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/TemplatePattern/email.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/TemplatePattern/email.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/TemplatePattern/otp.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/TemplatePattern/otp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/TemplatePattern/sms.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/TemplatePattern/sms.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/computer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/computer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/mac.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/mac.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/window.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/window.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/windowsAdapter.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/WrapperAdapterPattern/windowsAdapter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/bridge-pattern-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/bridge-pattern-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/chain-of-responsibility-pattern.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/chain-of-responsibility-pattern.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/decorator-pattern-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/decorator-pattern-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/iterator-pattern-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/iterator-pattern-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/proxy-pattern-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/proxy-pattern-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/strategy-patterns-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/strategy-patterns-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/subject-object-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/subject-object-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/template-pattern-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/template-pattern-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/wrapperadapter-pattern-client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/client/wrapperadapter-pattern-client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/decorator-practice.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/decorator-practice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/pipeline-practice.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Design-Patterns-practice/pipeline-practice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/action.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/action.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/db-client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/db-client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/dbconn.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/dbconn.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/pool.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool/pool.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool1/action.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool1/action.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool1/dbconnection.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool1/dbconnection.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool1/pool.go" beforeDir="false" afterPath="$PROJECT_DIR$/../for-gong-zhong-hao/Practical-practice/DBpool1/pool.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gee_rpc/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gee_rpc/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gee_rpc/.idea/project_gRPC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../gee_rpc/.idea/project_gRPC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gee_rpc/codec/codec.go" beforeDir="false" afterPath="$PROJECT_DIR$/../gee_rpc/codec/codec.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gee_rpc/codec/gob.go" beforeDir="false" afterPath="$PROJECT_DIR$/../gee_rpc/codec/gob.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gee_rpc/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/../gee_rpc/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloproto/.helloworld.pb.go.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloproto/helloworld.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloproto/helloworld.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloproto/student.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloproto/student.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/informer_practice/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/informer_practice/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/informer_practice/WatchExamlpe.go" beforeDir="false" afterPath="$PROJECT_DIR$/informer_practice/WatchExamlpe.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shareInformer/shareInformer_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/shareInformer/shareInformer_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_gRPC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project_gRPC/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../project_by_myself/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../project_by_myself/discover/discover_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/discover/discover_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../project_by_myself/endpoint/endpoint.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/endpoint/endpoint.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../project_by_myself/service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/service/service.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="2FSwUGQwwjph59aRRhaKtjzLJhr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cache" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/image" />
+      <recent name="$PROJECT_DIR$/reflector" />
+      <recent name="$PROJECT_DIR$/shareInformer" />
+      <recent name="$PROJECT_DIR$/fifo" />
+      <recent name="$PROJECT_DIR$/cachexxx" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build ShareInformerFactory_practice.go">
+    <configuration name="go build ShareInformerFactory_practice.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="k8s-informer-controller-practice" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/shareInformer/ShareInformerFactory_practice.go" />
+      <package value="k8s-informer-controller-practice" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build fifo_practice2.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="k8s-informer-controller-practice" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/reflector/fifo/fifo_practice2.go" />
+      <package value="k8s-informer-controller-practice" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build fifo_practice.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="k8s-informer-controller-practice" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/reflector/fifo/fifo_practice.go" />
+      <package value="k8s-informer-controller-practice" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build fifo_practice.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="k8s-informer-controller-practice" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/fifo/fifo_practice.go" />
+      <package value="k8s-informer-controller-practice" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="configMap_informer_with_gin_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="k8s-informer-controller-practice" />
+      <working_directory value="$PROJECT_DIR$/informer_practice" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <package value="k8s-informer-controller-practice" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/informer_practice/configMap_informer_with_gin_test.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build ShareInformerFactory_practice.go" />
+        <item itemvalue="Go Build.go build fifo_practice2.go" />
+        <item itemvalue="Go Build.go build fifo_practice.go (1)" />
+        <item itemvalue="Go Test.configMap_informer_with_gin_test.go" />
+        <item itemvalue="Go Build.go build fifo_practice.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/reflector/reflector_practice3.go</url>
+          <line>82</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/reflector/fifo/fifo_practice.go</url>
+          <line>44</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/shareInformer/shareInformerFactory_practice.go</url>
+          <line>189</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

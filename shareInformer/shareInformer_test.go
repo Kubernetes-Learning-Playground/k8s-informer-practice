@@ -41,12 +41,15 @@ func TestShareInformer(t *testing.T) {
 		log.Println(err)
 	}
 
-
+	// 可以加入多个EventHandler
 	configInformer.Informer().AddEventHandler(&ConfigMapHandler{})
+
 
 	// 也可以用Informer().Run(wait.NeverStop)
 	//configInformer.Informer().Run(wait.NeverStop)
+	// 看是启动所有的informer还是单独的。
 	fact.Start(wait.NeverStop)
+
 
 	select {} // 如果不是用gin 就需要永远阻塞
 

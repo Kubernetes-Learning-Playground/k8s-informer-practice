@@ -20,7 +20,7 @@ type WatchExample struct {
 	store cache.Store
 }
 
-// NewWatchDog 构建函数，输入参数：lw:list-watch objType:资源种类 h:资源handler
+// NewWatchWatchExample 构建函数，输入参数：lw:list-watch objType:资源种类 h:资源handler
 func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchExample {
 
 	// 新建Store

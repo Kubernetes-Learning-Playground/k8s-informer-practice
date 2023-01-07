@@ -10,11 +10,12 @@
 ### 
 ```bigquery
 ├── README.md
-├── cachexxx // 
+├── cache_copy // 从k8s中的缓存中复制出来的源码包
 ├── cachexxxxTest.go    // 测试用
 ├── fifo    // delta-fifo队列练习
 │   ├── README.md
-│   └── fifo_practice.go
+│   └── fifo_practi2e.go
+│   └── fifo_practice3.go  
 ├── go.mod
 ├── go.sum
 ├── image
@@ -24,40 +25,15 @@
 │   └── WatchExamlpe_test.go
 ├── reflector   // reflector机制练习
 │   ├── README.md
-│   ├── Reflector_practice.go
-│   └── Reflector_practice2.go
+│   ├── reflector_practice.go
+│   └── reflector_practice2.go
+│   └── reflector_practice3.go
 ├── shareInformer   // shareInformer机制练习
-│   ├── ShareInformerFactory_practice.go
-│   └── ShareInformer_practice.go
+│   ├── shareInformerFactory_practice.go
+│   └── shareInformer_practice.go
 └── src // client初始化
     └── K8sConfig.go
-    
-├── README.md
-├── cachexxx
-│   ├── ShareInformer_practice2.go
-├── cachexxxxTest.go
-├── fifo // informer队列Demo
-│   ├── README.md
-│   └── fifo_practice.go
-├── image
-│   └── framework.png
-├── informer_practice
-│   ├── README.md
-│   ├── WatchExamlpe.go // 自定义资源的informer
-│   ├── WatchExamlpe_test.go
-│   ├── configMap_index_informer_test.go // 加入index的informer   
-│   ├── configMap_informer_practice_test.go
-│   └── pod_informer_practice_test.go
-├── reflector
-│   ├── README.md
-│   ├── Reflector_practice.go   // list-watch接口demo
-│   └── Reflector_practice2.go  // 使用Reflector+ delta fifo 
-├── shareInformer   // 多资源informer方法
-│   ├── ShareInformerFactory_practice.go // 多资源使用同个informer监听
-│   ├── ShareInformer_practice.go
-│   └── shareInformer_test.go
-└── src // clinet初始化
-    └── K8sConfig.go
+
 ```
 
 
