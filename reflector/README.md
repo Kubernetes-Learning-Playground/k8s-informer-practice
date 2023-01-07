@@ -1,6 +1,8 @@
 ## Reflector原理简介与使用示例
 Reflector从api-server中使用list&watch操作资源对象，把资源转换成Delta struct包一层事件（包一层事件），并放入delta-fifo中。
 
+![](https://github.com/googs1025/k8s-informer-practice/blob/main/image/%E6%B5%81%E7%A8%8B%E5%9B%BE%20(3).jpg?raw=true)
+
 Reflector首先会使用list对api-server进行全量拉取需要的资源对象(ex: pod deployment等等)，并调用delta fifo的Replace方法把fifo中所有数据都全量替换，然后使用watch操作根据资源对象的变化类型调用不同方法放入fifo中。
 #### Reflector
 ```bigquery
