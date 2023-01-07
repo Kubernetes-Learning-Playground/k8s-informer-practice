@@ -1,6 +1,6 @@
 ## DeltaFIFO队列原理简介与使用示例
 DeltaFIFO队列在informer机制中如下图所示，它作为了**Apiserver**和**本地**(**Indexer**、**Listener**)之间的桥梁。它是一个生产者消费者队列(请分别关注**生产者**与**消费者**分别在informer机制中视哪两个组件！)，拥有FIFO的特性，操作的资源对象为Delta。
-
+![](https://github.com/googs1025/k8s-informer-practice/blob/main/image/%E6%B5%81%E7%A8%8B%E5%9B%BE%20(2).jpg?raw=true)
 每一个Delta包含一个操作类型和操作对象。
 ```bigquery
 // 存入delta fifo的value(包含事件类型+对象)
