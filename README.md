@@ -7,15 +7,17 @@
 
 3. 同时介绍一下informer机制里常用的组件：Reflector、Delta fifo、Indexer等
 
+
+
 ### 
 ```bigquery
 ├── README.md
-├── cache_copy // 从k8s中的缓存中复制出来的源码包
+├── cache_copy // 从k8s中的缓存中复制出来的源码包，其中cache_copy/shareInformer_practice2.go 是需要看的代码。
 ├── cachexxxxTest.go    // 测试用
 ├── fifo    // delta-fifo队列练习
 │   ├── README.md
 │   └── fifo_practi2e.go
-│   └── fifo_practice3.go  
+│   └── fifo_practice.go  
 ├── go.mod
 ├── go.sum
 ├── image
