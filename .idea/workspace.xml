@@ -166,7 +166,6 @@
       <change afterPath="$PROJECT_DIR$/../k8s-client-go-api-practice/util/error_handle.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../k8s-controller-runtime-practice/.idea/k8s-controller-runtime-practice.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../k8s-controller-runtime-practice/tests/test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../k8s-operator-practice-easy/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../k8s-operator-practice-easy/test/redis.yaml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../k8s-operator-practice/.idea/k8s-operator-practice.iml" afterDir="false" />
@@ -532,9 +531,6 @@
       <change beforePath="$PROJECT_DIR$/../helloproto/helloworld.proto" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../helloproto/student.pb.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../helloproto/student.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/informer_practice/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/informer_practice/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/informer_practice/WatchExamlpe.go" beforeDir="false" afterPath="$PROJECT_DIR$/informer_practice/WatchExamlpe.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shareInformer/shareInformer_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/shareInformer/shareInformer_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../project_gRPC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../project_gRPC/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../project_by_myself/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../project_by_myself/discover/discover_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../project_by_myself/discover/discover_client.go" afterDir="false" />
