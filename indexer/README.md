@@ -1,7 +1,7 @@
 ## Indexer原理简介与使用示例
 
 Indexer是informer机制中的本地缓存(带索引index)，可以通过读本地缓存的资源对象，减少对api-server的请求压力。
-
+![](https://github.com/googs1025/k8s-informer-practice/blob/main/image/%E6%B5%81%E7%A8%8B%E5%9B%BE%20(6).jpg?raw=true)
 #### 本地缓存Indexer接口对象
 ```bigquery
 type Indexer interface {
