@@ -17,6 +17,7 @@ func main() {
 		log.Fatal("缺少输入参数")
 		return
 	}
+
 	resources := os.Args[1] // // 资源，比如 "configmaps.v1.", "deployments.v1.apps", "rabbits.v1.stable.wbsnail.com"
 
 	dynamicClient := src.InitDynamicClient()
@@ -29,6 +30,7 @@ func main() {
 		log.Fatal("GVR解析为空")
 		return
 	}
+
 	// 使用 gvr 动态生成 Informer
 	informer := informerFactory.ForResource(*resourcesGVR).Informer()
 	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
@@ -39,7 +41,7 @@ func main() {
 			if !ok {
 				return
 			}
-			fmt.Printf("created: %s\n", s.GetName())
+			fmt.Printf("created: name: %s, apiversion: %s\n", s.GetName(), s.GetAPIVersion())
 		},
 		UpdateFunc: func(oldObj, newObj interface{}) {
 			oldS, ok1 := oldObj.(*unstructured.Unstructured)
@@ -60,7 +62,7 @@ func main() {
 			if !ok {
 				return
 			}
-			fmt.Printf("deleted: %s\n", s.GetName())
+			fmt.Printf("deleted name: %s, apiversion: %s\n", s.GetName(), s.GetAPIVersion())
 		},
 	})
 

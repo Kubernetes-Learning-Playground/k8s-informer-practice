@@ -21,7 +21,7 @@ func TestConfigMapInformer(t *testing.T) {
 	client := src.InitClient()
 	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything())
 
-
+	// informer 单一资源，只能支持一个回调
 	//_, informer := cache.NewInformer(listWatcher, &v1.ConfigMap{}, 0, &ConfigMapHandler{})
 	//
 	//informer.Run(wait.NeverStop)

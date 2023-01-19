@@ -1,8 +1,8 @@
 package indexer
 
 import (
-	initclient "k8s-informer-controller-practice/src"
 	"fmt"
+	initclient "k8s-informer-controller-practice/src"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/fields"
