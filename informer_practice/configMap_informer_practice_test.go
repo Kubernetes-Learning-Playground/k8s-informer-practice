@@ -2,7 +2,7 @@ package informer_practice
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/apimachinery/pkg/util/wait"
@@ -14,11 +14,11 @@ import (
 	informer机制：两大功能
 	1. 根据集群中的某资源的事件更新本地缓存
 	2. 触发注册到informer(sharedInformer)的事件回调方法
- */
+*/
 
 func TestConfigMapInformer(t *testing.T) {
 
-	client := src.InitClient()
+	client := config.InitClient()
 	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything())
 
 	// informer 单一资源，只能支持一个回调
@@ -32,16 +32,12 @@ func TestConfigMapInformer(t *testing.T) {
 	shareInformer.AddEventHandler(&ConfigMap2Handler{})
 	shareInformer.Run(wait.NeverStop)
 
-
 	select {}
 
 }
 
-
 // 事件的回调函数
-type ConfigMapHandler struct {
-
-}
+type ConfigMapHandler struct{}
 
 func (c *ConfigMapHandler) OnAdd(obj interface{}) {
 	fmt.Println("add:", obj.(*v1.ConfigMap).Name)
@@ -56,9 +52,7 @@ func (c *ConfigMapHandler) OnDelete(obj interface{}) {
 }
 
 // 事件2的回调函数
-type ConfigMap2Handler struct {
-
-}
+type ConfigMap2Handler struct{}
 
 func (c *ConfigMap2Handler) OnAdd(obj interface{}) {
 	fmt.Println("add2:", obj.(*v1.ConfigMap).Name)

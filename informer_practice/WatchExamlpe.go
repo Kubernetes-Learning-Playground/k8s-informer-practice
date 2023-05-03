@@ -10,14 +10,14 @@ import (
 // WatchExample 对象
 type WatchExample struct {
 	// 外部给的
-	lw *cache.ListWatch	// list-watcher
-	objType runtime.Object	// k8s资源总称，监听对象类型
-	h cache.ResourceEventHandler	// 包含三种事件，add update delete
+	lw      *cache.ListWatch           // list-watcher
+	objType runtime.Object             // k8s资源总称，监听对象类型
+	h       cache.ResourceEventHandler // 包含三种事件，add update delete
 
 	// 构建函数内部生成
 	reflector *cache.Reflector
-	fifo *cache.DeltaFIFO
-	store cache.Store
+	fifo      *cache.DeltaFIFO
+	store     cache.Store
 }
 
 // NewWatchWatchExample 构建函数，输入参数：lw:list-watch objType:资源种类 h:资源handler
@@ -28,7 +28,7 @@ func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.R
 
 	// 新建FIFO
 	fifo := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{
-		KeyFunction: cache.MetaNamespaceKeyFunc,
+		KeyFunction:  cache.MetaNamespaceKeyFunc,
 		KnownObjects: store,
 	})
 
@@ -36,21 +36,20 @@ func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.R
 	rf := cache.NewReflector(lw, objType, fifo, 0)
 
 	return &WatchExample{
-		lw: lw,	// list-watch
-		objType: objType,	// 资源
-		h: h,	// 资源的handler
-		store: store,	// 本地缓存
-		fifo: fifo,		// 队列
-		reflector: rf,	// reflector
+		lw:        lw,      // list-watch
+		objType:   objType, // 资源
+		h:         h,       // 资源的handler
+		store:     store,   // 本地缓存
+		fifo:      fifo,    // 队列
+		reflector: rf,      // reflector
 	}
 
 }
 
 func (wd *WatchExample) Run() {
 
-
 	ch := make(chan struct{})
-	 go func() {
+	go func() {
 		// 启动run
 		wd.reflector.Run(ch)
 	}()
@@ -63,8 +62,8 @@ func (wd *WatchExample) Run() {
 			for _, delta := range obj.(cache.Deltas) {
 				switch delta.Type {
 				case cache.Sync, cache.Added:
-					_ = wd.store.Add(delta.Object)	// 存入store缓存
-					wd.h.OnAdd(delta.Object) // 实现回调
+					_ = wd.store.Add(delta.Object) // 存入store缓存
+					wd.h.OnAdd(delta.Object)       // 实现回调
 				case cache.Deleted:
 					_ = wd.store.Delete(delta.Object)
 					wd.h.OnDelete(delta.Object)

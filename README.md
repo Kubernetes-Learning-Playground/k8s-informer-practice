@@ -35,7 +35,7 @@
 ├── shareInformer   // shareInformer机制练习
 │   ├── shareInformerFactory_practice.go
 │   └── shareInformer_practice.go
-└── src // client初始化
+└── config // client初始化
     └── K8sConfig.go
 
 ```

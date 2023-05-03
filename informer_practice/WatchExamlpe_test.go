@@ -2,7 +2,7 @@ package informer_practice
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/client-go/tools/cache"
@@ -33,7 +33,7 @@ var _ cache.ResourceEventHandler = &PodHandler{} // 查看是否实现此接口
 
 func TestWatchExamlpe(t *testing.T) {
 	// 建立client
-	client := src.InitClient()
+	client := config.InitClient()
 	// 客户端
 	podLW := cache.NewListWatchFromClient(
 		client.CoreV1().RESTClient(),

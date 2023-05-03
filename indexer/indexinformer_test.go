@@ -2,7 +2,7 @@ package indexer
 
 import (
 	"fmt"
-	initclient "k8s-informer-controller-practice/src"
+	initclient "k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/fields"
@@ -26,14 +26,13 @@ func TestConfigMapIndexInformer(t *testing.T) {
 		fmt.Println(err)
 	}
 
-
-	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything())	// list
+	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything()) // list
 
 	// 建立index 本地缓存
 	indexer := cache.Indexers{
-		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc,		// 本来内置的index就是以namespace来当做index
-		AnnotationsIndex: MetaAnnotationsIndexFunc,				// 自定义index增加索引
-		LabelsIndex: MetaLabelsIndexFunc,						// 自定义index增加索引
+		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc, // 本来内置的index就是以namespace来当做index
+		AnnotationsIndex:     MetaAnnotationsIndexFunc,     // 自定义index增加索引
+		LabelsIndex:          MetaLabelsIndexFunc,          // 自定义index增加索引
 
 	}
 
@@ -60,16 +59,11 @@ func TestConfigMapIndexInformer(t *testing.T) {
 	fmt.Println(myIndexer.IndexKeys(LabelsIndex, "label-test2"))
 	fmt.Println(myIndexer.ByIndex(AnnotationsIndex, "annotation-test"))
 
-
 	// 删除
 	_ = deleteConfigMap(client, cm1)
 	_ = deleteConfigMap(client, cm2)
 
-
-
 }
-
-
 
 // MetaAnnotationsIndexFunc 自定义indexFunc
 func MetaAnnotationsIndexFunc(obj interface{}) ([]string, error) {
@@ -98,7 +92,6 @@ func MetaLabelsIndexFunc(obj interface{}) ([]string, error) {
 
 	return []string{}, nil
 }
-
 
 // 事件的回调函数
 type ConfigMapHandler struct {

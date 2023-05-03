@@ -3,7 +3,7 @@ package cache_copy
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -13,41 +13,36 @@ import (
 	"time"
 )
 
-
-
 type PodHandler struct {
 	Msg string
 }
 
 func (p PodHandler) OnAdd(obj interface{}) {
-	fmt.Println("OnAdd:"+ p.Msg, obj.(metav1.Object).GetName())
+	fmt.Println("OnAdd:"+p.Msg, obj.(metav1.Object).GetName())
 }
 
 func (p PodHandler) OnUpdate(oldObj interface{}, newObj interface{}) {
-	fmt.Println("OnUpdate:"+ p.Msg)
+	fmt.Println("OnUpdate:" + p.Msg)
 }
 
 func (p PodHandler) OnDelete(obj interface{}) {
-	fmt.Println("OnDelete:"+ p.Msg)
+	fmt.Println("OnDelete:" + p.Msg)
 }
 
-
 type MySharedInformer struct {
-	// 通知
+	// 通知 listen
 	processor *sharedProcessor
 	// informer 三件套。
 	reflector *Reflector
-	fifo *DeltaFIFO
-	store Store
-
-
+	fifo      *DeltaFIFO
+	store     Store
 }
 
 func NewMySharedInformer(lw *ListWatch, objType runtime.Object, indexer Indexer) *MySharedInformer {
 
 	store := NewStore(MetaNamespaceKeyFunc)
 	fifo := NewDeltaFIFOWithOptions(DeltaFIFOOptions{
-		KeyFunction: MetaNamespaceKeyFunc,
+		KeyFunction:  MetaNamespaceKeyFunc,
 		KnownObjects: store,
 	})
 
@@ -55,10 +50,9 @@ func NewMySharedInformer(lw *ListWatch, objType runtime.Object, indexer Indexer)
 
 	return &MySharedInformer{
 		processor: &sharedProcessor{},
-		store: store,
-		fifo: fifo,
+		store:     store,
+		fifo:      fifo,
 		reflector: reflector,
-
 	}
 }
 
@@ -74,6 +68,7 @@ func (msi *MySharedInformer) start(ch <-chan struct{}) {
 	go func() {
 
 		for {
+			// 从fifo 不断取出
 			_, _ = msi.fifo.Pop(func(obj interface{}) error {
 
 				for _, delta := range obj.(Deltas) {
@@ -111,14 +106,13 @@ func (msi *MySharedInformer) start(ch <-chan struct{}) {
 	msi.processor.run(ch)
 }
 
-
 // MetaLabelIndexFunc 自定义一个方法 模拟MetaNamespaceIndexFunc用的！
 func MetaLabelIndexFunc(obj interface{}) ([]string, error) {
 	meta, err := meta.Accessor(obj)
 	if err != nil {
 		return []string{""}, fmt.Errorf("object has no meta: %v", err)
 	}
-	if v, ok := meta.GetLabels()["app"];ok {
+	if v, ok := meta.GetLabels()["app"]; ok {
 		return []string{v}, nil
 	}
 	return []string{}, nil
@@ -126,7 +120,7 @@ func MetaLabelIndexFunc(obj interface{}) ([]string, error) {
 
 func Test() {
 	//// 未加入indexer
-	//client := src.InitClient()
+	//client := config.InitClient()
 	//podLW := NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
 	//
 	//
@@ -137,7 +131,6 @@ func Test() {
 	//msi.addEventHandler(&PodHandler{Msg: "handler2"})
 	//msi.start(wait.NeverStop)
 
-
 	// 加入indexer
 	//indexers := Indexers{"namespace": MetaNamespaceIndexFunc}
 	//pod1 := &v1.Pod{ObjectMeta: metav1.ObjectMeta{
@@ -147,19 +140,14 @@ func Test() {
 	//	Name: "pod2", Namespace: "ns2", Labels: map[string]string{"app": "l2"},
 	//}}
 
-
 	//myindex := NewIndexer(DeletionHandlingMetaNamespaceKeyFunc, indexers)
 	//myindex.Add(pod1)
 	//myindex.Add(pod2)
-
 
 	//objList, _ := myindex.IndexKeys("namespace", "ns1")
 	//for _, obj := range objList {
 	//	//fmt.Println(myindex.GetByKey(obj))
 	//}
-
-
-
 
 	// 自定义MetaLableIndexFunc事例
 	//indexers1 := Indexers{"app": MetaLableIndexFunc}
@@ -172,7 +160,6 @@ func Test() {
 	//for _, obj := range objList1 {
 	//	fmt.Println(myindex1.GetByKey(obj))
 	//}
-
 
 	// 结合gin框架
 
@@ -189,20 +176,10 @@ func Test() {
 		_ = r.Run(":8088")
 	}()
 
-	client := src.InitClient()
+	client := config.InitClient()
 	podLW := NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
 	msi := NewMySharedInformer(podLW, &v1.Pod{}, myindex)
 	msi.addEventHandler(&PodHandler{})
 	msi.start(wait.NeverStop)
 
-
-
-
-
-
-
-
-
 }
-
-

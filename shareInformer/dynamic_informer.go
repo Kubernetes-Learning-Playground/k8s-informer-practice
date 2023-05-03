@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/dynamic/dynamicinformer"
@@ -20,7 +20,7 @@ func main() {
 
 	resources := os.Args[1] // // 资源，比如 "configmaps.v1.", "deployments.v1.apps", "rabbits.v1.stable.wbsnail.com"
 
-	dynamicClient := src.InitDynamicClient()
+	dynamicClient := config.InitDynamicClient()
 	informerFactory := dynamicinformer.NewFilteredDynamicSharedInformerFactory(
 		dynamicClient, 0, "default", nil)
 
@@ -74,10 +74,5 @@ func main() {
 	go informerFactory.Start(stopCh)
 
 	<-stopCh
-	
-
-
 
 }
-
-

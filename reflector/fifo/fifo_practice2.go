@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"k8s.io/client-go/tools/cache"
 	appsv1 "k8s.io/api/apps/v1"
+	"k8s.io/client-go/tools/cache"
 )
 
 /*
@@ -15,11 +15,10 @@ func newK8sDeployment() *appsv1.Deployment {
 }
 
 var (
-	addNum 	  int
+	addNum    int
 	updateNum int
 	deleteNum int
 )
-
 
 // 简单操作delta fifo队列。
 
@@ -41,11 +40,10 @@ func main() {
 	dep2.Namespace = "namespace2"
 	_ = df.Add(dep2)
 
-
 	dep1.Name = "dep11111"
 	_ = df.Update(dep1)
 
-	fmt.Println(df.List())	// 返回所有列表
+	fmt.Println(df.List()) // 返回所有列表
 	// 3.push到fifo队列 update事件
 
 	dep3 := newK8sDeployment()
@@ -55,9 +53,6 @@ func main() {
 
 	// 4.push到fifo队列 delete事件
 	_ = df.Delete(dep1)
-
-
-
 
 	// "不断"从fifo中pop出来。当中有个回调函数，作用是分别不同事件所有做的不同回调方法，只取出一个key的元素
 	for {

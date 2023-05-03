@@ -3,8 +3,8 @@ package informer_practice
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"k8s-informer-controller-practice/config"
 	"k8s-informer-controller-practice/informer_practice/factory"
-	"k8s-informer-controller-practice/src"
 	metav1 "k8s.io/api/apps/v1"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/labels"
@@ -21,7 +21,7 @@ import (
 	http://xxxxxxxxxx:8082/core/v1/configmaps
 
 
- */
+*/
 
 var (
 	registerMap = map[string]struct{}{}
@@ -29,15 +29,14 @@ var (
 
 func TestConfigMapInformerWithGin(t *testing.T) {
 
-	client := src.InitClient()
+	client := config.InitClient()
 
 	fact := informers.NewSharedInformerFactoryWithOptions(client, 0, informers.WithNamespace("default"))
 
-
 	podInformer := factory.Watch(fact, "v1", "pods")
-	registerMap["pods"] = struct {}{}
+	registerMap["pods"] = struct{}{}
 	err := podInformer.AddIndexers(cache.Indexers{
-		"labels": factory.LabelIndexFunc,	// 除了label外，也可以加入自定义检索的index
+		"labels":      factory.LabelIndexFunc, // 除了label外，也可以加入自定义检索的index
 		"annotations": factory.AnnotationsIndexFunc,
 	})
 	if err != nil {
@@ -45,9 +44,9 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 	}
 
 	configMapInformer := factory.Watch(fact, "v1", "configmaps")
-	registerMap["configmaps"] = struct {}{}
+	registerMap["configmaps"] = struct{}{}
 	err = configMapInformer.AddIndexers(cache.Indexers{
-		"labels": factory.LabelIndexFunc,	// 除了label外，也可以加入自定义检索的index
+		"labels":      factory.LabelIndexFunc, // 除了label外，也可以加入自定义检索的index
 		"annotations": factory.AnnotationsIndexFunc,
 	})
 	if err != nil {
@@ -55,18 +54,14 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 	}
 
 	deploymentInformer := factory.Watch(fact, "apps/v1", "deployments")
-	registerMap["deployments"] = struct {}{}
+	registerMap["deployments"] = struct{}{}
 	err = deploymentInformer.AddIndexers(cache.Indexers{
-		"labels": factory.LabelIndexFunc,	// 除了label外，也可以加入自定义检索的index
+		"labels":      factory.LabelIndexFunc, // 除了label外，也可以加入自定义检索的index
 		"annotations": factory.AnnotationsIndexFunc,
 	})
 	if err != nil {
 		panic(err)
 	}
-
-
-
-
 
 	factMap := factory.NewMyFactory()
 	factMap.InformersMap[reflect.TypeOf(&v1.Pod{})] = podInformer
@@ -82,7 +77,6 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 	defer func() {
 		r.Run(":8082")
 	}()
-
 
 	r.GET("/configmaps", func(c *gin.Context) {
 		// 法一：不使用label过滤
@@ -102,28 +96,27 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 		configMapList, err := fact.Core().V1().ConfigMaps().Lister().List(labels.SelectorFromSet(set))
 
 		if err != nil {
-			c.JSON(400, gin.H{"error":err.Error()})
+			c.JSON(400, gin.H{"error": err.Error()})
 		} else {
 			c.JSON(200, gin.H{"data": configMapList})
 		}
 	})
-
 
 	/*
 		通用资源的informer 路由处理
 		ex: http://1.14.120.233:8082/core/v1/pods?labels[app]=webapp
 		请求事例：localhost:8080/core/v1/configmaps?labels[app]=dev
 		思考：localhost:8080/apps/v1/deployments 为何显示不出来也没报错：因为没有使用对应的informer监听
-	 */
+	*/
 	r.GET("/:group/:version/:resource", func(c *gin.Context) {
 		var g, v, r = c.Param("group"), c.Param("version"), c.Param("resource")
 		if g == "core" {
-			g = ""	// 当是资源组是core  时，需要传入空字符串
+			g = "" // 当是资源组是core  时，需要传入空字符串
 		}
 		// 组成GVR
 		objGroupVersionResource := schema.GroupVersionResource{
-			Group: g,
-			Version: v,
+			Group:    g,
+			Version:  v,
 			Resource: r,
 		}
 
@@ -135,7 +128,7 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 
 		informer, err := fact.ForResource(objGroupVersionResource)
 		if err != nil {
-			c.JSON(400, gin.H{"error":err.Error()})
+			c.JSON(400, gin.H{"error": err.Error()})
 		}
 
 		var set map[string]string
@@ -143,41 +136,37 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 			set = labelsMap
 		}
 
-
-
 		list, err := informer.Lister().List(labels.SelectorFromSet(set))
 		if err != nil {
-			c.JSON(400, gin.H{"error":err.Error()})
+			c.JSON(400, gin.H{"error": err.Error()})
 		} else {
-			c.JSON(200, gin.H{"data":list})
+			c.JSON(200, gin.H{"data": list})
 		}
 
-
 	})
-
 
 	// 路由请求事例：/common/configmaps.v1.?labels=user:jiang
 	//: /common/deployments.v1.apps?labels=user:jiang
 	//: /common/deployments.v1.apps?labels=app:nginx&annotations=deployment.kubernetes.io/revision:7
 	r.GET("/common/:gvr", func(c *gin.Context) {
-		gvr, _  := schema.ParseResourceArg(c.Param("gvr"))
-		informer,_ := fact.ForResource(*gvr)
+		gvr, _ := schema.ParseResourceArg(c.Param("gvr"))
+		informer, _ := fact.ForResource(*gvr)
 
 		//初始化都是nil
-		var labelKeys, annotationKeys []string = nil,nil
-		var list []string//最终结果
+		var labelKeys, annotationKeys []string = nil, nil
+		var list []string //最终结果
 		if c.Query("labels") != "" {
 			labelKeys, _ = informer.Informer().GetIndexer().
-				IndexKeys("labels",c.Query("labels"))
+				IndexKeys("labels", c.Query("labels"))
 		}
 		if c.Query("annotations") != "" {
 			annotationKeys, _ = informer.Informer().GetIndexer().
-				IndexKeys("annotations",c.Query("annotations"))
+				IndexKeys("annotations", c.Query("annotations"))
 		}
 		// 返回indexKey
 		if labelKeys != nil && annotationKeys != nil {
 			list = factory.Intersect(labelKeys, annotationKeys) // 求交集
-		}else if labelKeys != nil {
+		} else if labelKeys != nil {
 			list = labelKeys
 		} else {
 			list = annotationKeys
@@ -190,9 +179,8 @@ func TestConfigMapInformerWithGin(t *testing.T) {
 		//indexList,_ := informer.Informer().GetIndexer().
 		//	Index("labels",c.Query("labels"))
 
-		c.JSON(200,gin.H{"data": list})
+		c.JSON(200, gin.H{"data": list})
 	})
-
 
 }
 

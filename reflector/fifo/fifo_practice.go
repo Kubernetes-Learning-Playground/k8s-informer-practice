@@ -7,18 +7,18 @@ import (
 
 /*
 	手动把自定义资源放入fifo中，并加入回调方法，让取出资源的时候可以执行回调函数。
- */
+*/
 
 // 自定义pod对象 (想加入的自定义资源对象。)
 type pod struct {
-	Name string
+	Name  string
 	Value float64
 }
 
 // 构建pod
 func newPod(name string, v float64) pod {
 	return pod{
-		Name: name,
+		Name:  name,
 		Value: v,
 	}
 }
@@ -45,7 +45,7 @@ func main() {
 	_ = df.Add(pod1)
 	_ = df.Add(pod2)
 	_ = df.Add(pod3)
-	fmt.Println(df.List())	// 返回所有列表
+	fmt.Println(df.List()) // 返回所有列表
 	pod1.Value = 1.111
 	// 3.push到fifo队列 update事件
 	_ = df.Update(pod1)

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/client-go/tools/cache"
@@ -12,9 +12,9 @@ import (
 
 func main() {
 
-	client := src.InitClient()
-	store := cache.NewStore(cache.MetaNamespaceKeyFunc)	// 缓存
-	podListWatcher  := cache.NewListWatchFromClient(
+	client := config.InitClient()
+	store := cache.NewStore(cache.MetaNamespaceKeyFunc) // 缓存
+	podListWatcher := cache.NewListWatchFromClient(
 		client.CoreV1().RESTClient(),
 		"pods",
 		"dafault",
@@ -22,8 +22,8 @@ func main() {
 
 	// 默认下，只有支持一个回调函数。
 	df := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{
-		KeyFunction: cache.MetaNamespaceKeyFunc,
-		KnownObjects: store,	// 会存内容到缓存中，如果没有设置就delete不会有事件发生,就是没有本地缓存
+		KeyFunction:  cache.MetaNamespaceKeyFunc,
+		KnownObjects: store, // 会存内容到缓存中，如果没有设置就delete不会有事件发生,就是没有本地缓存
 	})
 
 	/*
@@ -32,15 +32,15 @@ func main() {
 		资源对象
 		delta fifo队列
 		同步list时间: k8s list的时间
-	 */
+	*/
 	rf := cache.NewReflector(podListWatcher, &v1.Pod{}, df, 0)
 	ch := make(chan struct{})
-	
+
 	go func() {
 		// 开始监听
 		rf.Run(ch)
 	}()
-	
+
 	for {
 		// informer 不断消费队列
 		_, _ = df.Pop(func(obj interface{}) error {
@@ -61,7 +61,5 @@ func main() {
 			return nil
 		})
 	}
-	
-
 
 }

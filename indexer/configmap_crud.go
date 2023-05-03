@@ -10,15 +10,14 @@ import (
 
 const (
 	AnnotationsIndex = "annotations-test"
-	LabelsIndex = "labels-test"
+	LabelsIndex      = "labels-test"
 )
 
 func createConfigMap(client kubernetes.Interface, name string, namespace string, annotationSet string, labelSet string) (*corev1.ConfigMap, error) {
 
-
 	cm := &corev1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: name,
+			Name:      name,
 			Namespace: namespace,
 			Labels: map[string]string{
 				LabelsIndex: labelSet,
@@ -44,9 +43,9 @@ func createConfigMap(client kubernetes.Interface, name string, namespace string,
 
 }
 
-func deleteConfigMap(client kubernetes.Interface , cm *corev1.ConfigMap) error {
+func deleteConfigMap(client kubernetes.Interface, cm *corev1.ConfigMap) error {
 	err := client.CoreV1().ConfigMaps(cm.Namespace).
-		Delete(context.Background(), cm.GetName(),metav1.DeleteOptions{})
+		Delete(context.Background(), cm.GetName(), metav1.DeleteOptions{})
 
 	if err != nil {
 		fmt.Println("delete err: ", err)

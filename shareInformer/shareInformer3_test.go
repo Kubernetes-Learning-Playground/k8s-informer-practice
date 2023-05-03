@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/informers"
@@ -13,24 +13,22 @@ import (
 
 func TestShareInformer3(t *testing.T) {
 	// 客户端
-	client := src.InitClient()
+	client := config.InitClient()
 	// 对deployment 监听
-	informerFactory := informers.NewSharedInformerFactoryWithOptions(client, time.Second * 20, informers.WithNamespace("default"))
+	informerFactory := informers.NewSharedInformerFactoryWithOptions(client, time.Second*20, informers.WithNamespace("default"))
 	deploymentInformer := informerFactory.Apps().V1().Deployments()
 
 	// 创建informer
 	informer := deploymentInformer.Informer()
 	// 如果有add update delete 事件，就会回调下面的函数。
 	informer.AddEventHandler(cache.ResourceEventHandlerFuncs{
-		AddFunc: onAdd,
+		AddFunc:    onAdd,
 		UpdateFunc: onUpdate,
 		DeleteFunc: onDelete,
 	})
 
 	// 创建Lister
 	deploymentList := deploymentInformer.Lister()
-
-
 
 	stopC := make(chan struct{})
 	defer close(stopC)
@@ -51,9 +49,6 @@ func TestShareInformer3(t *testing.T) {
 
 	<-stopC
 
-
-
-
 }
 
 func onDelete(obj interface{}) {
@@ -71,5 +66,3 @@ func onAdd(obj interface{}) {
 	deploy := obj.(*v1.Deployment)
 	fmt.Println("new add deployment: ", deploy.Name)
 }
-
-

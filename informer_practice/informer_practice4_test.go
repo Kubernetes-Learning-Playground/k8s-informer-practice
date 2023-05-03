@@ -2,7 +2,7 @@ package informer_practice
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	metav1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/client-go/rest"
@@ -28,11 +28,9 @@ func newQueue(store cache.Store) cache.Queue {
 	return queue
 }
 
-
-
 func newObjListWatcher(groupVersionResource string, namespace string) cache.ListerWatcher {
 	res := strings.Split(groupVersionResource, "/")
-	clientSet := src.InitClient()
+	clientSet := config.InitClient()
 
 	var client rest.Interface
 	if res[0] == "" {
@@ -45,7 +43,6 @@ func newObjListWatcher(groupVersionResource string, namespace string) cache.List
 	lw := cache.NewListWatchFromClient(client, resource, namespace, selector)
 
 	return lw
-
 
 }
 
@@ -85,12 +82,12 @@ func newController() cache.Controller {
 	}
 
 	config := cache.Config{
-		Queue: queue,
-		ListerWatcher: lw,
-		ObjectType: &metav1.Deployment{},
+		Queue:            queue,
+		ListerWatcher:    lw,
+		ObjectType:       &metav1.Deployment{},
 		FullResyncPeriod: 0,
-		RetryOnError: false,
-		Process: processObj,
+		RetryOnError:     false,
+		Process:          processObj,
 	}
 	return cache.New(&config)
 }
@@ -107,6 +104,5 @@ func TestObjInformer(t *testing.T) {
 	go controller.Run(stopCh)
 
 	<-stopCh
-
 
 }

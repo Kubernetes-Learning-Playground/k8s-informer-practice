@@ -2,7 +2,7 @@ package informer_practice
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/informers"
@@ -14,13 +14,13 @@ import (
 
 func TestPodInformer(t *testing.T) {
 	// client客户端
-	client := src.InitClient()
+	client := config.InitClient()
 	stopC := make(chan struct{})
 	defer close(stopC)
 
 	// sharedInformer实例
 	sharedInformers := informers.NewSharedInformerFactory(client, time.Minute)
-	informer := sharedInformers.Core().V1().Pods().Informer()	// informer 可以add多个资源的实例
+	informer := sharedInformers.Core().V1().Pods().Informer() // informer 可以add多个资源的实例
 
 	// 回调函数
 	podHandler := cache.ResourceEventHandlerFuncs{
@@ -39,9 +39,8 @@ func TestPodInformer(t *testing.T) {
 			podObj := obj.(v1.Object)
 			log.Printf("Pod deleted from store %s", podObj.GetName())
 		},
-
 	}
-	informer.AddEventHandler(podHandler)	// 加入handler！
+	informer.AddEventHandler(podHandler) // 加入handler！
 	fmt.Println("pod informer start!")
 	informer.Run(stopC)
 	if !cache.WaitForCacheSync(wait.NeverStop, informer.HasSynced) {

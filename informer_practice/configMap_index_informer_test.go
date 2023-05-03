@@ -2,7 +2,7 @@ package informer_practice
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/fields"
@@ -14,22 +14,22 @@ import (
 
 func TestConfigMapIndexInformer(t *testing.T) {
 	// client客户端
-	client := src.InitClient()
-	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything())	// list
+	client := config.InitClient()
+	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything()) // list
 	//index := cache.Indexers{} 空的 没有建立索引与indexFunc的关系。
 	// 建立index
 	indexer := cache.Indexers{
-		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc,	// 本来内置的index就是以namespace来当做index，所以写与不写都一样
-		AnnotationsIndex: MetaAnnotationsIndexFunc,	// 自定义index增加索引
+		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc, // 本来内置的index就是以namespace来当做index，所以写与不写都一样
+		AnnotationsIndex:     MetaAnnotationsIndexFunc,     // 自定义index增加索引
 	} // 建立索引与indexFunc的关系
 	// 建立indexInformer
 	myIndexer, indexInformer := cache.NewIndexerInformer(listWatcher, &v1.ConfigMap{}, 0, &ConfigMapHandler1{}, indexer)
-	
+
 	stopC := make(chan struct{})
 	// 需要用goroutine拉资源
 	go indexInformer.Run(wait.NeverStop)
 	defer close(stopC)
-	
+
 	// 如果没有同步完毕
 	if !cache.WaitForCacheSync(stopC, indexInformer.HasSynced) {
 		log.Fatal("sync err")
@@ -39,8 +39,6 @@ func TestConfigMapIndexInformer(t *testing.T) {
 	// obj, exist, err := myIndexer.GetByKey("default/kube-root-ca.crt")
 	fmt.Println(myIndexer.IndexKeys(cache.NamespaceIndex, "default"))
 	fmt.Println(myIndexer.IndexKeys(AnnotationsIndex, "go"))
-
-
 
 	select {}
 
@@ -64,11 +62,8 @@ func MetaAnnotationsIndexFunc(obj interface{}) ([]string, error) {
 	return []string{}, nil
 }
 
-
-// 事件的回调函数
-type ConfigMapHandler1 struct {
-
-}
+// ConfigMapHandler1 事件的回调函数
+type ConfigMapHandler1 struct{}
 
 func (c *ConfigMapHandler1) OnAdd(obj interface{}) {
 	fmt.Println("add:", obj.(*v1.ConfigMap).Name)

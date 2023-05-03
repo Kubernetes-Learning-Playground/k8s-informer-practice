@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/client-go/rest"
@@ -13,7 +13,7 @@ import (
 
 func newSharedInformerListWatcher(groupVersionResource string, namespace string) cache.ListerWatcher {
 	res := strings.Split(groupVersionResource, "/")
-	clientSet := src.InitClient()
+	clientSet := config.InitClient()
 
 	var client rest.Interface
 	if res[0] == "" {

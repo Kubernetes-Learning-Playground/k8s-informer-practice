@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/client-go/tools/cache"
@@ -14,12 +14,11 @@ import (
 	1. 支持多个EventHandler，可理解为多个消费者。
 	2. 内置一个Indexer(有个threadSafeMap的struct实现)
     3. 多个消费者共享了Indexer
- */
-
+*/
 
 func main() {
 
-	client := src.InitClient()
+	client := config.InitClient()
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
 	podLW := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
 
@@ -28,10 +27,5 @@ func main() {
 	//ss.AddEventHandler()
 	//ss.AddEventHandler()
 	fmt.Println(ss, store)
-
-
-
-
-
 
 }

@@ -18,9 +18,8 @@ func NewMyFactory() *MyFactory {
 	}
 }
 
-
 func Watch(fact informers.SharedInformerFactory, groupVersion, resource string) cache.SharedIndexInformer {
-	gv := strings.Split(groupVersion,"/")
+	gv := strings.Split(groupVersion, "/")
 	var group, version string
 
 	if len(gv) == 1 {
@@ -34,11 +33,11 @@ func Watch(fact informers.SharedInformerFactory, groupVersion, resource string) 
 		version = gv[1]
 	}
 	grv := schema.GroupVersionResource{
-		Group: group,
-		Version: version,
+		Group:    group,
+		Version:  version,
 		Resource: resource,
 	}
-	informer,err := fact.ForResource(grv)
+	informer, err := fact.ForResource(grv)
 	if err != nil {
 		panic(err)
 	}
@@ -46,9 +45,8 @@ func Watch(fact informers.SharedInformerFactory, groupVersion, resource string) 
 	informer.Informer().AddEventHandler(&cache.ResourceEventHandlerFuncs{})
 	return informer.Informer()
 
-
 }
-func Start(fact informers.SharedInformerFactory)  {
+func Start(fact informers.SharedInformerFactory) {
 	ch := make(chan struct{})
 	fact.Start(ch)
 	fact.WaitForCacheSync(ch)

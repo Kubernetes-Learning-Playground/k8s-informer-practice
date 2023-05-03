@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"k8s-informer-controller-practice/src"
+	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
@@ -15,7 +15,7 @@ import (
 func main() {
 
 	// List namespace：是default下的所有pods
-	client := src.InitClient()
+	client := config.InitClient()
 	podLW := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
 	list, err := podLW.List(metav1.ListOptions{})
 	if err != nil {
@@ -43,7 +43,5 @@ func main() {
 			}
 		}
 	}
-
-
 
 }
