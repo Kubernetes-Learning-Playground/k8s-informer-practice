@@ -45,5 +45,4 @@ func TestWatchExamlpe(t *testing.T) {
 	wd := NewWatchWatchExample(podLW, &v1.Pod{}, &PodHandler{})
 	// 启动
 	wd.Run()
-
 }
