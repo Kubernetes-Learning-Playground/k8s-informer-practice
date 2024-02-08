@@ -4,7 +4,7 @@ DeltaFIFO队列在informer机制中如下图所示，它作为了**Apiserver**�
 ![](https://github.com/googs1025/k8s-informer-practice/blob/main/image/%E6%B5%81%E7%A8%8B%E5%9B%BE%20(2).jpg?raw=true)
 
 每一个Delta包含一个操作类型和操作对象。
-```bigquery
+```go
 // 存入delta fifo的value(包含事件类型+对象)
 type Delta struct {
 	Type   DeltaType
@@ -18,7 +18,7 @@ type Deltas []Delta
 2. Delta: 存储**对象**与**对象的行为** Added Updated Deleted Sync (注意这四种事件分别用来做什么的！)
 3. keyFunc: 需要使用key的计算方法。ex: 在k8s环境中可以使用name+namespace的方式获得唯一标示。
 4. knownObjects: 可以直接理解为本地缓存。ex: indexer or store组件(本质也是一个读写安全的map)
-```bigquery
+```go
 type DeltaFIFO struct {
 	// lock/cond protects access to 'items' and 'queue'.
 	lock sync.RWMutex
@@ -92,42 +92,42 @@ Sync：本地同步(从"本地缓存"读取数据到delta fifo中)
 func (f *DeltaFIFO) queueActionLocked(actionType DeltaType, obj interface{}) error {
 	// 计算key 
     id, err := f.KeyOf(obj)
-	if err != nil {
-		return KeyError{obj, err}
-	}
-	// 取到对象	
-	oldDeltas := f.items[id]
-	// 可以发现append进去的对象是Delta的形式   
-	newDeltas := append(oldDeltas, Delta{actionType, obj})
-	// 去重，对删除对象去重。
+    if err != nil {
+        return KeyError{obj, err}
+    }
+    // 取到对象	
+    oldDeltas := f.items[id]
+    // 可以发现append进去的对象是Delta的形式   
+    newDeltas := append(oldDeltas, Delta{actionType, obj})
+    // 去重，对删除对象去重。
     newDeltas = dedupDeltas(newDeltas)
 
-	if len(newDeltas) > 0 {
+    if len(newDeltas) > 0 {
         // 如果不存在，append
-		if _, exists := f.items[id]; !exists {
-			f.queue = append(f.queue, id)
-		}
+        if _, exists := f.items[id]; !exists {
+            f.queue = append(f.queue, id)
+        }
     
-		f.items[id] = newDeltas
-		f.cond.Broadcast()
-	} else {
-		// This never happens, because dedupDeltas never returns an empty list
-		// when given a non-empty list (as it is here).
-		// If somehow it happens anyway, deal with it but complain.
-		if oldDeltas == nil {
-			klog.Errorf("Impossible dedupDeltas for id=%q: oldDeltas=%#+v, obj=%#+v; ignoring", id, oldDeltas, obj)
-			return nil
-		}
-		klog.Errorf("Impossible dedupDeltas for id=%q: oldDeltas=%#+v, obj=%#+v; breaking invariant by storing empty Deltas", id, oldDeltas, obj)
-		f.items[id] = newDeltas
-		return fmt.Errorf("Impossible dedupDeltas for id=%q: oldDeltas=%#+v, obj=%#+v; broke DeltaFIFO invariant by storing empty Deltas", id, oldDeltas, obj)
-	}
-	return nil
+        f.items[id] = newDeltas
+        f.cond.Broadcast()
+    } else {
+        // This never happens, because dedupDeltas never returns an empty list
+        // when given a non-empty list (as it is here).
+        // If somehow it happens anyway, deal with it but complain.
+        if oldDeltas == nil {
+            klog.Errorf("Impossible dedupDeltas for id=%q: oldDeltas=%#+v, obj=%#+v; ignoring", id, oldDeltas, obj)
+            return nil
+        }
+        klog.Errorf("Impossible dedupDeltas for id=%q: oldDeltas=%#+v, obj=%#+v; breaking invariant by storing empty Deltas", id, oldDeltas, obj)
+        f.items[id] = newDeltas
+        return fmt.Errorf("Impossible dedupDeltas for id=%q: oldDeltas=%#+v, obj=%#+v; broke DeltaFIFO invariant by storing empty Deltas", id, oldDeltas, obj)
+    }
+    return nil
 }
 ```
 ## POP操作
 
-```bigquery
+```go
 目录：tools/cache/delta_fifo.go
 func (f *DeltaFIFO) Pop(process PopProcessFunc) (interface{}, error) {
 	f.lock.Lock()

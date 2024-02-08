@@ -46,6 +46,7 @@ func Watch(fact informers.SharedInformerFactory, groupVersion, resource string) 
 	return informer.Informer()
 
 }
+
 func Start(fact informers.SharedInformerFactory) {
 	ch := make(chan struct{})
 	fact.Start(ch)

@@ -36,7 +36,7 @@
 │   ├── shareInformerFactory_practice.go
 │   └── shareInformer_practice.go
 └── config // client初始化
-    └── K8sConfig.go
+    └── k8s_config.go
 
 ```
 

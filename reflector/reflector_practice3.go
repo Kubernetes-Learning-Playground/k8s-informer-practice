@@ -86,6 +86,7 @@ func main() {
 	// reflector 开始运行后，队列中就会推入新收到的事件
 	go reflector.Run(stopCh)
 
+	// 处理方法
 	processObj := func(obj interface{}) error {
 		// 最先收到的事件会被最先处理
 		for _, d := range obj.(cache.Deltas) {
@@ -101,7 +102,7 @@ func main() {
 						return err
 					}
 				}
-				// delete方法，直接在本地缓存找到后删除
+			// delete方法，直接在本地缓存找到后删除
 			case cache.Deleted:
 				if err := store.Delete(d.Object); err != nil {
 					return err

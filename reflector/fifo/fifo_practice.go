@@ -15,7 +15,7 @@ type pod struct {
 	Value float64
 }
 
-// 构建pod
+// newPod 构建pod
 func newPod(name string, v float64) pod {
 	return pod{
 		Name:  name,

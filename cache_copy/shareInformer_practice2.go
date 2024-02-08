@@ -73,6 +73,7 @@ func (msi *MySharedInformer) start(ch <-chan struct{}) {
 
 				for _, delta := range obj.(Deltas) {
 					switch delta.Type {
+					// 两步操作：1. 同步给本地缓存 2. 封装成processor的回调
 					case Sync, Added:
 						_ = msi.store.Add(delta.Object)
 						msi.processor.distribute(addNotification{newObj: delta.Object}, false)

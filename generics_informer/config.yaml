@@ -1,0 +1,12 @@
+# 资源对象
+resources:
+  # 填入 gvr 列表
+  gvr:
+    - apps/v1/deployments
+    - apps/v1/daemonsets
+    - core/v1/pods
+    - batch/v1/jobs
+    - batch/v1/cronjobs
+    - core/v1/services
+    - core/v1/nodes
+

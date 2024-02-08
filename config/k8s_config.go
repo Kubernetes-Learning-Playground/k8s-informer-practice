@@ -16,7 +16,7 @@ func K8sRestConfig() *rest.Config {
 
 	var kubeConfig *string
 
-	if home := HomeDir(); home != "" {
+	if home := homeDir(); home != "" {
 		kubeConfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "")
 	} else {
 		kubeConfig = flag.String("kubeconfig", "", "")
@@ -32,7 +32,7 @@ func K8sRestConfig() *rest.Config {
 }
 
 // InitClient 初始化k8s clientSet
-func InitClient() *kubernetes.Clientset {
+func InitClient() kubernetes.Interface {
 	c, err := kubernetes.NewForConfig(K8sRestConfig())
 	if err != nil {
 		log.Fatal(err)
@@ -50,7 +50,7 @@ func InitDynamicClient() dynamic.Interface {
 	return d
 }
 
-func HomeDir() string {
+func homeDir() string {
 	if h := os.Getenv("HOME"); h != "" {
 		return h
 	}

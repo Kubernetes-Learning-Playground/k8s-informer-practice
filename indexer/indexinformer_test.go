@@ -33,7 +33,6 @@ func TestConfigMapIndexInformer(t *testing.T) {
 		cache.NamespaceIndex: cache.MetaNamespaceIndexFunc, // 本来内置的index就是以namespace来当做index
 		AnnotationsIndex:     MetaAnnotationsIndexFunc,     // 自定义index增加索引
 		LabelsIndex:          MetaLabelsIndexFunc,          // 自定义index增加索引
-
 	}
 
 	// 建立indexInformer

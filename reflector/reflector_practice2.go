@@ -21,6 +21,7 @@ func main() {
 		fields.Everything())
 
 	// 默认下，只有支持一个回调函数。
+	// reflect依赖deltafifo
 	df := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{
 		KeyFunction:  cache.MetaNamespaceKeyFunc,
 		KnownObjects: store, // 会存内容到缓存中，如果没有设置就delete不会有事件发生,就是没有本地缓存

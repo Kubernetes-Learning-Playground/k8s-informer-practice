@@ -23,7 +23,7 @@ type WatchExample struct {
 // NewWatchWatchExample 构建函数，输入参数：lw:list-watch objType:资源种类 h:资源handler
 func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.ResourceEventHandler) *WatchExample {
 
-	// 新建Store
+	// 新建Store，默认使用indexers
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
 
 	// 新建FIFO
@@ -43,22 +43,23 @@ func NewWatchWatchExample(lw *cache.ListWatch, objType runtime.Object, h cache.R
 		fifo:      fifo,    // 队列
 		reflector: rf,      // reflector
 	}
-
 }
 
+// 启动自定义Informer
 func (wd *WatchExample) Run() {
 
 	ch := make(chan struct{})
+
+	// 异步启动reflector，因为reflector本身会阻塞
 	go func() {
 		// 启动run
 		wd.reflector.Run(ch)
 	}()
 
-	// 不断从队列取出来，并区分事件分类，并放入store中
+	// 不断从delta fifo队列取出来，并区分事件分类，并放入store中
 	for {
 		// 从fifo队列中 pop出来
 		_, _ = wd.fifo.Pop(func(obj interface{}) error {
-
 			for _, delta := range obj.(cache.Deltas) {
 				switch delta.Type {
 				case cache.Sync, cache.Added:
