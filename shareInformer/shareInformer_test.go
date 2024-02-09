@@ -20,7 +20,7 @@ import (
 
 func TestShareInformer(t *testing.T) {
 
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 
 	// 两个方法区别
 	//fact := informers.NewSharedInformerFactory(client, time.Minute)	// 这个会监听所有namespace
@@ -62,7 +62,7 @@ func TestShareInformer(t *testing.T) {
 type ConfigMapHandler struct {
 }
 
-func (c *ConfigMapHandler) OnAdd(obj interface{}) {
+func (c *ConfigMapHandler) OnAdd(obj interface{}, isInInitialList bool) {
 	fmt.Println("add:", obj.(*v1.ConfigMap).Name)
 }
 

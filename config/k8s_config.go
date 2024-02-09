@@ -27,12 +27,11 @@ func K8sRestConfig() *rest.Config {
 	if err != nil {
 		log.Panic(err.Error())
 	}
-
 	return config
 }
 
-// InitClient 初始化k8s clientSet
-func InitClient() kubernetes.Interface {
+// InitClientOrDie 初始化 k8s clientSet
+func InitClientOrDie() kubernetes.Interface {
 	c, err := kubernetes.NewForConfig(K8sRestConfig())
 	if err != nil {
 		log.Fatal(err)
@@ -41,8 +40,8 @@ func InitClient() kubernetes.Interface {
 	return c
 }
 
-// InitDynamicClient 初始化k8s dynamic client
-func InitDynamicClient() dynamic.Interface {
+// InitDynamicClientOrDie 初始化 k8s dynamic client
+func InitDynamicClientOrDie() dynamic.Interface {
 	d, err := dynamic.NewForConfig(K8sRestConfig())
 	if err != nil {
 		log.Fatal(err)
@@ -54,6 +53,5 @@ func homeDir() string {
 	if h := os.Getenv("HOME"); h != "" {
 		return h
 	}
-
 	return os.Getenv("USERPROFILE")
 }

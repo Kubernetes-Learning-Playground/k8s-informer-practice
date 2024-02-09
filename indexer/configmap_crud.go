@@ -13,8 +13,8 @@ const (
 	LabelsIndex      = "labels-test"
 )
 
-func createConfigMap(client kubernetes.Interface, name string, namespace string, annotationSet string, labelSet string) (*corev1.ConfigMap, error) {
-
+func createConfigMap(client kubernetes.Interface, name string, namespace string,
+	annotationSet string, labelSet string) (*corev1.ConfigMap, error) {
 	cm := &corev1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,
@@ -30,8 +30,7 @@ func createConfigMap(client kubernetes.Interface, name string, namespace string,
 			"foo": "boo",
 		},
 	}
-
-	cm, err := client.CoreV1().ConfigMaps("default").Create(context.Background(), cm, metav1.CreateOptions{})
+	cm, err := client.CoreV1().ConfigMaps(namespace).Create(context.Background(), cm, metav1.CreateOptions{})
 
 	if err != nil {
 		fmt.Println("create err: ", err)
@@ -51,8 +50,6 @@ func deleteConfigMap(client kubernetes.Interface, cm *corev1.ConfigMap) error {
 		fmt.Println("delete err: ", err)
 		return err
 	}
-
 	fmt.Println("delete configmap", cm.GetName())
-
 	return nil
 }

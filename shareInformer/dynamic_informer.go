@@ -20,7 +20,7 @@ func main() {
 
 	resources := os.Args[1] // // 资源，比如 "configmaps.v1.", "deployments.v1.apps", "rabbits.v1.stable.wbsnail.com"
 
-	dynamicClient := config.InitDynamicClient()
+	dynamicClient := config.InitDynamicClientOrDie()
 	informerFactory := dynamicinformer.NewFilteredDynamicSharedInformerFactory(
 		dynamicClient, 0, "default", nil)
 

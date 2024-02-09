@@ -12,32 +12,11 @@
 
 
 ### 
-```bigquery
-├── README.md
-├── cache_copy // 从k8s中的缓存中复制出来的源码包，其中cache_copy/shareInformer_practice2.go 是需要看的代码。
-├── cachexxxxTest.go    // 测试用
-├── fifo    // delta-fifo队列练习
-│   ├── README.md
-│   └── fifo_practi2e.go
-│   └── fifo_practice.go  
-├── go.mod
-├── go.sum
-├── image
-├── informer_practice //自定义informer
-│   ├── README.md
-│   ├── WatchExamlpe.go
-│   └── WatchExamlpe_test.go
-├── reflector   // reflector机制练习
-│   ├── README.md
-│   ├── reflector_practice.go
-│   └── reflector_practice2.go
-│   └── reflector_practice3.go
-├── shareInformer   // shareInformer机制练习
-│   ├── shareInformerFactory_practice.go
-│   └── shareInformer_practice.go
-└── config // client初始化
-    └── k8s_config.go
 
-```
+- indexer [调用练习](./indexer)
+- informer [调用练习](./informer_practice)
+- reflector [调用练习](./reflector)
+- shareInformer [调用练习](./shareInformer)
+- 通用 Informer [收集器](./generics_informer)
 
 

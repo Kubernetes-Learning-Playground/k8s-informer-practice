@@ -14,7 +14,7 @@ type PodHandler struct {
 }
 
 // OnAdd 当有add事件时，使用的回调函数
-func (p PodHandler) OnAdd(obj interface{}) {
+func (p PodHandler) OnAdd(obj interface{}, isInInitialList bool) {
 	fmt.Println("OnAdd:", obj.(*v1.Pod).Name)
 }
 
@@ -33,7 +33,7 @@ var _ cache.ResourceEventHandler = &PodHandler{} // 查看是否实现此接口
 
 func TestWatchExamlpe(t *testing.T) {
 	// 建立client
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	// 客户端
 	podLW := cache.NewListWatchFromClient(
 		client.CoreV1().RESTClient(),

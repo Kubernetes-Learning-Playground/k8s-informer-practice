@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc) // 缓存
 	podListWatcher := cache.NewListWatchFromClient(
 		client.CoreV1().RESTClient(),
@@ -44,7 +44,7 @@ func main() {
 
 	for {
 		// informer 不断消费队列
-		_, _ = df.Pop(func(obj interface{}) error {
+		_, _ = df.Pop(func(obj interface{}, isInInitialList bool) error {
 			for _, delta := range obj.(cache.Deltas) {
 
 				// 遍历后需要判断回调类型，并加入store(缓存)中，不然无法取到事件。

@@ -42,7 +42,7 @@ func newQueue(store cache.Store) cache.Queue {
 func newListWatcher(groupVersionResource string, namespace string) cache.ListerWatcher {
 	// 用来分api路径
 	res := strings.Split(groupVersionResource, "/")
-	clientSet := config.InitClient()
+	clientSet := config.InitClientOrDie()
 
 	var client rest.Interface
 	if res[0] == "" {
@@ -87,7 +87,7 @@ func main() {
 	go reflector.Run(stopCh)
 
 	// 处理方法
-	processObj := func(obj interface{}) error {
+	processObj := func(obj interface{}, isInInitialList bool) error {
 		// 最先收到的事件会被最先处理
 		for _, d := range obj.(cache.Deltas) {
 			switch d.Type {

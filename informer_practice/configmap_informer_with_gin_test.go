@@ -29,7 +29,7 @@ var (
 
 func TestConfigMapInformerWithGin(t *testing.T) {
 
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 
 	fact := informers.NewSharedInformerFactoryWithOptions(client, 0, informers.WithNamespace("default"))
 
@@ -191,7 +191,5 @@ func IsRegistered(resource string) bool {
 			return true
 		}
 	}
-
 	return false
-
 }

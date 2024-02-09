@@ -13,7 +13,7 @@ import (
 
 func TestShareInformer3(t *testing.T) {
 	// 客户端
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	// 对deployment 监听
 	informerFactory := informers.NewSharedInformerFactoryWithOptions(client, time.Second*20, informers.WithNamespace("default"))
 	deploymentInformer := informerFactory.Apps().V1().Deployments()

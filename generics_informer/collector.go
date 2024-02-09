@@ -2,6 +2,7 @@ package generics_informer
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"k8s-informer-controller-practice/generics_informer/config"
 	"k8s-informer-controller-practice/generics_informer/option"
@@ -18,8 +19,15 @@ import (
 	"sync"
 )
 
-// GenericsCollector 通用型 Informer 收集器
-type GenericsCollector struct {
+// GenericsCollector 收集器接口
+type GenericsCollector interface {
+	Run() error
+	Stop()
+	AddEventHandler(handler HandleFunc)
+}
+
+// genericsCollector 通用型 Informer 具体实现
+type genericsCollector struct {
 	// option 配置文件
 	option *option.CollectorOption
 	// restMapper 提供 GVR GVK 映射表
@@ -45,18 +53,21 @@ type GenericsCollector struct {
 }
 
 // NewGenericsCollector
-// input: 配置文件路径ㄝ, 配置项, k8s 客户端
+// input: 配置文件路径, 配置项, k8s 客户端
 func NewGenericsCollector(path string, option *option.CollectorOption,
-	kubeClient clientset.Interface) *GenericsCollector {
+	kubeClient clientset.Interface) (GenericsCollector, error) {
 
 	gr, err := restmapper.GetAPIGroupResources(kubeClient.Discovery())
 	if err != nil {
-		klog.Fatal(err)
+		return nil, err
 	}
 	mapper := restmapper.NewDiscoveryRESTMapper(gr)
 	sharedInformers := informers.NewSharedInformerFactory(kubeClient, option.ResyncPeriod)
-	monitorSet, _ := newGVRFromConfig(path)
-	return &GenericsCollector{
+	monitorSet, err := newGVRFromConfig(path)
+	if err != nil {
+		return nil, err
+	}
+	return &genericsCollector{
 		option:          option,
 		kubeClient:      kubeClient,
 		restMapper:      mapper,
@@ -66,7 +77,7 @@ func NewGenericsCollector(path string, option *option.CollectorOption,
 		sharedInformers: sharedInformers,
 		monitors:        map[schema.GroupVersionResource]*monitor{},
 		monitorSets:     monitorSet,
-	}
+	}, nil
 }
 
 // monitor 监视器
@@ -80,7 +91,7 @@ type monitor struct {
 }
 
 // AddEventHandler 调用方自定义方法
-func (gc *GenericsCollector) AddEventHandler(handler HandleFunc) {
+func (gc *genericsCollector) AddEventHandler(handler HandleFunc) {
 	gc.HandleFunc = handler
 }
 
@@ -88,7 +99,7 @@ type HandleFunc func(object *workqueue.QueueResource) error
 
 type monitors map[schema.GroupVersionResource]*monitor
 
-func (gc *GenericsCollector) resyncMonitors(deletableResources map[schema.GroupVersionResource]struct{}) error {
+func (gc *genericsCollector) resyncMonitors(deletableResources map[schema.GroupVersionResource]struct{}) error {
 	if err := gc.initMonitorSet(deletableResources); err != nil {
 		return err
 	}
@@ -96,7 +107,7 @@ func (gc *GenericsCollector) resyncMonitors(deletableResources map[schema.GroupV
 	return nil
 }
 
-func (gc *GenericsCollector) controllerFor(resource schema.GroupVersionResource, kind schema.GroupVersionKind) (cache.Controller, cache.Store, error) {
+func (gc *genericsCollector) controllerFor(resource schema.GroupVersionResource, kind schema.GroupVersionKind) (cache.Controller, cache.Store, error) {
 	// 处理方法, 核心逻辑就是放入工作队列中
 	handlers := cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {
@@ -128,7 +139,7 @@ func (gc *GenericsCollector) controllerFor(resource schema.GroupVersionResource,
 	return shared.Informer().GetController(), shared.Informer().GetStore(), nil
 }
 
-func (gc *GenericsCollector) initMonitorSet(resources map[schema.GroupVersionResource]struct{}) error {
+func (gc *genericsCollector) initMonitorSet(resources map[schema.GroupVersionResource]struct{}) error {
 	gc.monitorLock.Lock()
 	defer gc.monitorLock.Unlock()
 	errList := make([]error, 0)
@@ -169,7 +180,7 @@ func newGVRFromConfig(path string) (map[schema.GroupVersionResource]struct{}, er
 }
 
 // startMonitors 启动监视器
-func (gc *GenericsCollector) startMonitors() {
+func (gc *genericsCollector) startMonitors() {
 	gc.monitorLock.Lock()
 	defer gc.monitorLock.Unlock()
 
@@ -195,7 +206,7 @@ func (m *monitor) Run() {
 	m.controller.Run(m.stopCh)
 }
 
-func (gc *GenericsCollector) isSynced() bool {
+func (gc *genericsCollector) isSynced() bool {
 	gc.monitorLock.Lock()
 	defer gc.monitorLock.Unlock()
 
@@ -213,12 +224,12 @@ func (gc *GenericsCollector) isSynced() bool {
 	return true
 }
 
-func (gc *GenericsCollector) runProcess(ctx context.Context) {
+func (gc *genericsCollector) runProcess(ctx context.Context) {
 	for gc.process(ctx) {
 	}
 }
 
-func (gc *GenericsCollector) process(ctx context.Context) bool {
+func (gc *genericsCollector) process(ctx context.Context) bool {
 	for {
 		select {
 		case <-ctx.Done():
@@ -250,11 +261,11 @@ func (gc *GenericsCollector) process(ctx context.Context) bool {
 	}
 }
 
-func (gc *GenericsCollector) Run() {
-	gc.RunWithContext(context.TODO())
+func (gc *genericsCollector) Run() error {
+	return gc.RunWithContext(context.TODO())
 }
 
-func (gc *GenericsCollector) RunWithContext(ctx context.Context) {
+func (gc *genericsCollector) RunWithContext(ctx context.Context) error {
 	klog.Infof("GenericsCollector running")
 	defer klog.Infof("GenericsCollector stopping")
 	defer gc.workQueue.Close()
@@ -268,18 +279,19 @@ func (gc *GenericsCollector) RunWithContext(ctx context.Context) {
 
 	err := gc.initMonitorSet(gc.monitorSets)
 	if err != nil {
-		return
+		return err
 	}
 	gc.startMonitors()
 
 	// 2. 等待 informers 的 cache 同步完成
 	if !cache.WaitForCacheSync(gc.stopCh, gc.isSynced) {
-		return
+		return errors.New("wait for cache sync error")
 	}
 	<-gc.stopCh
+	return nil
 }
 
-func (gc *GenericsCollector) Stop() {
+func (gc *genericsCollector) Stop() {
 
 	gc.monitorLock.Lock()
 	defer gc.monitorLock.Unlock()

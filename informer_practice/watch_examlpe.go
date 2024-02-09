@@ -59,12 +59,12 @@ func (wd *WatchExample) Run() {
 	// 不断从delta fifo队列取出来，并区分事件分类，并放入store中
 	for {
 		// 从fifo队列中 pop出来
-		_, _ = wd.fifo.Pop(func(obj interface{}) error {
+		_, _ = wd.fifo.Pop(func(obj interface{}, isInInitialList bool) error {
 			for _, delta := range obj.(cache.Deltas) {
 				switch delta.Type {
 				case cache.Sync, cache.Added:
-					_ = wd.store.Add(delta.Object) // 存入store缓存
-					wd.h.OnAdd(delta.Object)       // 实现回调
+					_ = wd.store.Add(delta.Object)  // 存入store缓存
+					wd.h.OnAdd(delta.Object, false) // 实现回调
 				case cache.Deleted:
 					_ = wd.store.Delete(delta.Object)
 					wd.h.OnDelete(delta.Object)

@@ -56,9 +56,9 @@ func main() {
 
 	// "不断"从fifo中pop出来。当中有个回调函数，作用是分别不同事件所有做的不同回调方法，只取出一个key的元素
 	for {
-		_, _ = df.Pop(func(obj interface{}) error {
+		_, _ = df.Pop(func(obj interface{}, isInInitialList bool) error {
 			for _, delta := range obj.(cache.Deltas) {
-				fmt.Println(delta.Type, ":", delta.Object.(*appsv1.Deployment).Name, "value:", delta.Object.(*xappsv1.Deployment).Namespace) // 断言为pod，因为只有pod
+				fmt.Println(delta.Type, ":", delta.Object.(*appsv1.Deployment).Name, "value:", delta.Object.(*appsv1.Deployment).Namespace) // 断言为pod，因为只有pod
 
 				// 这里进行回调，区分不同事件，可以执行业务逻辑 ex: 统计次数 加入本地缓存等操作。
 				switch delta.Type {

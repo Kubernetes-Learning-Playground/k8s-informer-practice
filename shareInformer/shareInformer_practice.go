@@ -18,7 +18,7 @@ import (
 
 func main() {
 
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
 	podLW := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
 

@@ -14,7 +14,7 @@ import (
 
 func TestPodInformer(t *testing.T) {
 	// client客户端
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	stopC := make(chan struct{})
 	defer close(stopC)
 

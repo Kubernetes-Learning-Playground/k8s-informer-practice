@@ -14,7 +14,7 @@ import (
 
 func TestConfigMapIndexInformer(t *testing.T) {
 
-	client := initclient.InitClient()
+	client := initclient.InitClientOrDie()
 
 	cm1, err := createConfigMap(client, "configmap-test1", "default", "annotation-test", "label-test")
 	if err != nil {
@@ -35,7 +35,7 @@ func TestConfigMapIndexInformer(t *testing.T) {
 		LabelsIndex:          MetaLabelsIndexFunc,          // 自定义index增加索引
 	}
 
-	// 建立indexInformer
+	// 建立 indexInformer
 	myIndexer, indexInformer := cache.NewIndexerInformer(listWatcher, &v1.ConfigMap{}, 0, &ConfigMapHandler{}, indexer)
 
 	stopC := make(chan struct{})
@@ -96,7 +96,7 @@ func MetaLabelsIndexFunc(obj interface{}) ([]string, error) {
 type ConfigMapHandler struct {
 }
 
-func (c *ConfigMapHandler) OnAdd(obj interface{}) {
+func (c *ConfigMapHandler) OnAdd(obj interface{}, isInInitialList bool) {
 	fmt.Println("add:", obj.(*v1.ConfigMap).Name)
 }
 

@@ -177,7 +177,7 @@ func Test() {
 		_ = r.Run(":8088")
 	}()
 
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	podLW := NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
 	msi := NewMySharedInformer(podLW, &v1.Pod{}, myindex)
 	msi.addEventHandler(&PodHandler{})

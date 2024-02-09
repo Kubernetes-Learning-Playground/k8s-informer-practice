@@ -13,7 +13,7 @@ import (
 
 func newSharedInformerListWatcher(groupVersionResource string, namespace string) cache.ListerWatcher {
 	res := strings.Split(groupVersionResource, "/")
-	clientSet := config.InitClient()
+	clientSet := config.InitClientOrDie()
 
 	var client rest.Interface
 	if res[0] == "" {

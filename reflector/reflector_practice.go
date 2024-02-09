@@ -15,7 +15,7 @@ import (
 func main() {
 
 	// List namespace：是default下的所有pods
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	podLW := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "pods", "default", fields.Everything())
 	list, err := podLW.List(metav1.ListOptions{})
 	if err != nil {

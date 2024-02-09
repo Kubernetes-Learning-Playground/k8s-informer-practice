@@ -14,11 +14,11 @@ import (
 )
 
 type MyFactory struct {
-	client    *kubernetes.Clientset                      // 客户端
+	client    kubernetes.Interface                       // 客户端
 	informers map[reflect.Type]cache.SharedIndexInformer // 反射的informer map
 }
 
-func NewMyFactory(client *kubernetes.Clientset) *MyFactory {
+func NewMyFactory(client kubernetes.Interface) *MyFactory {
 	return &MyFactory{
 		client:    client,
 		informers: make(map[reflect.Type]cache.SharedIndexInformer),
@@ -105,7 +105,7 @@ func (f *MyFactory) Start() {
 }
 
 func main() {
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	fact := NewMyFactory(client)
 
 	// 注册回调函数

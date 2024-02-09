@@ -53,7 +53,7 @@ func main() {
 	_ = df.Delete(pod1)
 
 	// 从fifo中pop出来。当中有个回调函数，作用是分别不同事件所有做的不同回调方法，只取出一个key的元素
-	_, _ = df.Pop(func(obj interface{}) error {
+	_, _ = df.Pop(func(obj interface{}, isInInitialList bool) error {
 		for _, delta := range obj.(cache.Deltas) {
 			fmt.Println(delta.Type, ":", delta.Object.(pod).Name, "value:", delta.Object.(pod).Value) // 断言为pod，因为只有pod
 

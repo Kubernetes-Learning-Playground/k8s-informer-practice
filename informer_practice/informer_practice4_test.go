@@ -30,7 +30,7 @@ func newQueue(store cache.Store) cache.Queue {
 
 func newObjListWatcher(groupVersionResource string, namespace string) cache.ListerWatcher {
 	res := strings.Split(groupVersionResource, "/")
-	clientSet := config.InitClient()
+	clientSet := config.InitClientOrDie()
 
 	var client rest.Interface
 	if res[0] == "" {
@@ -52,7 +52,7 @@ func newController() cache.Controller {
 	store := newStore()
 	queue := newQueue(store)
 
-	processObj := func(obj interface{}) error {
+	processObj := func(obj interface{}, isInInitialList bool) error {
 		// 最先收到的事件会被最先处理
 		for _, d := range obj.(cache.Deltas) {
 			switch d.Type {
@@ -72,7 +72,6 @@ func newController() cache.Controller {
 				}
 			}
 			obj, ok := d.Object.(*metav1.Deployment)
-			//deployment, ok := d.Object.(*metav1.Deployment)
 			if !ok {
 				return fmt.Errorf("not config: %T", d.Object)
 			}
@@ -81,7 +80,7 @@ func newController() cache.Controller {
 		return nil
 	}
 
-	config := cache.Config{
+	cfg := cache.Config{
 		Queue:            queue,
 		ListerWatcher:    lw,
 		ObjectType:       &metav1.Deployment{},
@@ -89,7 +88,7 @@ func newController() cache.Controller {
 		RetryOnError:     false,
 		Process:          processObj,
 	}
-	return cache.New(&config)
+	return cache.New(&cfg)
 }
 
 func TestObjInformer(t *testing.T) {
