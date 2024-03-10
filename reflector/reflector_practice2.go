@@ -8,23 +8,27 @@ import (
 	"k8s.io/client-go/tools/cache"
 )
 
-// 已经迁移到cachexxx目录中。
-
 func main() {
 
 	client := config.InitClientOrDie()
-	store := cache.NewStore(cache.MetaNamespaceKeyFunc) // 缓存
+	// 创建一个Store，用于存储资源对象
+	store := cache.NewStore(cache.MetaNamespaceKeyFunc)
+	// 创建一个ListWatcher，用于监听资源对象的变化
+
 	podListWatcher := cache.NewListWatchFromClient(
 		client.CoreV1().RESTClient(),
 		"pods",
 		"dafault",
+		// 可以在这里使用字段过滤
 		fields.Everything())
 
 	// 默认下，只有支持一个回调函数。
-	// reflect依赖deltafifo
+	// reflector 依赖 delta fifo
 	df := cache.NewDeltaFIFOWithOptions(cache.DeltaFIFOOptions{
-		KeyFunction:  cache.MetaNamespaceKeyFunc,
-		KnownObjects: store, // 会存内容到缓存中，如果没有设置就delete不会有事件发生,就是没有本地缓存
+		// delta fifo 的 key
+		KeyFunction: cache.MetaNamespaceKeyFunc,
+		// 内容会存到缓存中，如果没有设置就delete不会有事件发生,就是没有本地缓存
+		KnownObjects: store,
 	})
 
 	/*
@@ -34,6 +38,7 @@ func main() {
 		delta fifo队列
 		同步list时间: k8s list的时间
 	*/
+	// 使用 reflector 调用，传入 list-watcher，资源对象，delta fifo 队列
 	rf := cache.NewReflector(podListWatcher, &v1.Pod{}, df, 0)
 	ch := make(chan struct{})
 
@@ -43,7 +48,7 @@ func main() {
 	}()
 
 	for {
-		// informer 不断消费队列
+		// delta fifo 不断消费队列
 		_, _ = df.Pop(func(obj interface{}, isInInitialList bool) error {
 			for _, delta := range obj.(cache.Deltas) {
 

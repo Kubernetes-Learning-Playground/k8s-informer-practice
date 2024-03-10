@@ -32,6 +32,7 @@ func newStore() cache.Store {
 // 这个 KnownObjects 对队列，以及对 Reflector 都是只读的，用户需要自己维护好 store 的状态。
 func newQueue(store cache.Store) cache.Queue {
 	opt := cache.DeltaFIFOOptions{
+		// delta fifo 内部要内嵌 indexer 本地缓存
 		KnownObjects: store,
 		//EmitDeltaTypeReplaced: true,
 	}
@@ -80,13 +81,10 @@ func main() {
 	groupVersionResource := "/pods"
 	reflector := newObjReflector(groupVersionResource, "default", v1.Pod{}, queue)
 
-	stopCh := make(chan struct{})
-	defer close(stopCh)
-
 	// reflector 开始运行后，队列中就会推入新收到的事件
-	go reflector.Run(stopCh)
+	go reflector.Run(wait.NeverStop)
 
-	// 处理方法
+	// 出队处理方法
 	processObj := func(obj interface{}, isInInitialList bool) error {
 		// 最先收到的事件会被最先处理
 		for _, d := range obj.(cache.Deltas) {
@@ -127,6 +125,6 @@ func main() {
 				panic(err)
 			}
 		}
-	}, time.Second, stopCh)
+	}, time.Second, wait.NeverStop)
 
 }

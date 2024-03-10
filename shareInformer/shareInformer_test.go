@@ -54,7 +54,7 @@ func TestShareInformer(t *testing.T) {
 	//	return
 	//}
 
-	select {} // 如果不是用gin 就需要永远阻塞
+	<-wait.NeverStop
 
 }
 

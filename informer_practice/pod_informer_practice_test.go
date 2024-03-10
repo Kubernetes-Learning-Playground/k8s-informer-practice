@@ -15,8 +15,6 @@ import (
 func TestPodInformer(t *testing.T) {
 	// client客户端
 	client := config.InitClientOrDie()
-	stopC := make(chan struct{})
-	defer close(stopC)
 
 	// sharedInformer实例
 	sharedInformers := informers.NewSharedInformerFactory(client, time.Minute)
@@ -42,7 +40,7 @@ func TestPodInformer(t *testing.T) {
 	}
 	informer.AddEventHandler(podHandler) // 加入handler！
 	fmt.Println("pod informer start!")
-	informer.Run(stopC)
+	informer.Run(wait.NeverStop)
 	if !cache.WaitForCacheSync(wait.NeverStop, informer.HasSynced) {
 		return
 	}

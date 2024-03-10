@@ -38,13 +38,11 @@ func TestConfigMapIndexInformer(t *testing.T) {
 	// 建立 indexInformer
 	myIndexer, indexInformer := cache.NewIndexerInformer(listWatcher, &v1.ConfigMap{}, 0, &ConfigMapHandler{}, indexer)
 
-	stopC := make(chan struct{})
 	// 需要用goroutine拉资源
 	go indexInformer.Run(wait.NeverStop)
-	defer close(stopC)
 
 	// 如果没有同步完毕
-	if !cache.WaitForCacheSync(stopC, indexInformer.HasSynced) {
+	if !cache.WaitForCacheSync(wait.NeverStop, indexInformer.HasSynced) {
 		log.Fatal("sync err")
 	}
 

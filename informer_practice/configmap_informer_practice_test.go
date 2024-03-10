@@ -18,7 +18,7 @@ import (
 
 func TestConfigMapInformer(t *testing.T) {
 
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything())
 
 	// informer 单一资源，只能支持一个回调
@@ -39,7 +39,7 @@ func TestConfigMapInformer(t *testing.T) {
 // 事件的回调函数
 type ConfigMapHandler struct{}
 
-func (c *ConfigMapHandler) OnAdd(obj interface{}) {
+func (c *ConfigMapHandler) OnAdd(obj interface{}, isInInitialList bool) {
 	fmt.Println("add:", obj.(*v1.ConfigMap).Name)
 }
 
@@ -54,7 +54,7 @@ func (c *ConfigMapHandler) OnDelete(obj interface{}) {
 // 事件2的回调函数
 type ConfigMap2Handler struct{}
 
-func (c *ConfigMap2Handler) OnAdd(obj interface{}) {
+func (c *ConfigMap2Handler) OnAdd(obj interface{}, isInInitialList bool) {
 	fmt.Println("add2:", obj.(*v1.ConfigMap).Name)
 }
 

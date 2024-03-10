@@ -52,10 +52,10 @@ type genericsCollector struct {
 	stopCh <-chan struct{}
 }
 
-// NewGenericsCollector
-// input: 配置文件路径, 配置项, k8s 客户端
-func NewGenericsCollector(path string, option *option.CollectorOption,
-	kubeClient clientset.Interface) (GenericsCollector, error) {
+func newGenericsCollector(
+	option *option.CollectorOption,
+	kubeClient clientset.Interface,
+	monitorSet map[schema.GroupVersionResource]struct{}) (GenericsCollector, error) {
 
 	gr, err := restmapper.GetAPIGroupResources(kubeClient.Discovery())
 	if err != nil {
@@ -63,10 +63,7 @@ func NewGenericsCollector(path string, option *option.CollectorOption,
 	}
 	mapper := restmapper.NewDiscoveryRESTMapper(gr)
 	sharedInformers := informers.NewSharedInformerFactory(kubeClient, option.ResyncPeriod)
-	monitorSet, err := newGVRFromConfig(path)
-	if err != nil {
-		return nil, err
-	}
+
 	return &genericsCollector{
 		option:          option,
 		kubeClient:      kubeClient,
@@ -78,6 +75,26 @@ func NewGenericsCollector(path string, option *option.CollectorOption,
 		monitors:        map[schema.GroupVersionResource]*monitor{},
 		monitorSets:     monitorSet,
 	}, nil
+}
+
+func NewGenericsCollectorWithGVR(option *option.CollectorOption,
+	kubeClient clientset.Interface, gvr ...string) (GenericsCollector, error) {
+	monitorSet, err := newGVR(gvr...)
+	if err != nil {
+		return nil, err
+	}
+	return newGenericsCollector(option, kubeClient, monitorSet)
+}
+
+// NewGenericsCollectorWithConfig
+// input: 配置文件路径, 配置项, k8s 客户端
+func NewGenericsCollectorWithConfig(path string, option *option.CollectorOption,
+	kubeClient clientset.Interface) (GenericsCollector, error) {
+	monitorSet, err := newGVRFromConfig(path)
+	if err != nil {
+		return nil, err
+	}
+	return newGenericsCollector(option, kubeClient, monitorSet)
 }
 
 // monitor 监视器
@@ -175,8 +192,19 @@ func newGVRFromConfig(path string) (map[schema.GroupVersionResource]struct{}, er
 		}
 		m[groupVersionResource] = struct{}{}
 	}
-
 	return m, err
+}
+
+func newGVR(gvr ...string) (map[schema.GroupVersionResource]struct{}, error) {
+	m := map[schema.GroupVersionResource]struct{}{}
+	for _, v := range gvr {
+		groupVersionResource, err := config.ParseIntoGvr(v, "/")
+		if err != nil {
+			return nil, err
+		}
+		m[groupVersionResource] = struct{}{}
+	}
+	return m, nil
 }
 
 // startMonitors 启动监视器

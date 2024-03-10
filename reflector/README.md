@@ -5,7 +5,7 @@ Reflector从api-server中使用list&watch操作资源对象，把资源转换成
 
 Reflector首先会使用list对api-server进行全量拉取需要的资源对象(ex: pod deployment等等)，并调用delta fifo的Replace方法把fifo中所有数据都全量替换，然后使用watch操作根据资源对象的变化类型调用不同方法放入fifo中。
 #### Reflector
-```bigquery
+```go
 type Reflector struct {
 	name string
     
@@ -57,7 +57,7 @@ type Reflector struct {
 }
 ```
 #### ListAndWatch方法
-```bigquery
+```go
 func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
 	klog.V(3).Infof("Listing and watching %v from %s", r.expectedTypeName, r.name)
     // list操作
@@ -163,7 +163,7 @@ func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
 }
 ```
 #### watchHandler方法
-```bigquery
+```go
 func watchHandler(start time.Time,
 	w watch.Interface,
 	store Store,

@@ -5,6 +5,7 @@ import (
 	"k8s-informer-controller-practice/config"
 	v1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/fields"
+	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/cache"
 	"strings"
@@ -57,13 +58,10 @@ func TestShareInformer2(t *testing.T) {
 		},
 	})
 
-	stopCh := make(chan struct{})
-	defer close(stopCh)
-
 	fmt.Println("Start syncing....")
 
-	go sharedInformer.Run(stopCh)
+	go sharedInformer.Run(wait.NeverStop)
 
-	<-stopCh
+	<-wait.NeverStop
 
 }

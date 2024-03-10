@@ -5,6 +5,7 @@ import (
 	"k8s-informer-controller-practice/config"
 	metav1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/fields"
+	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/cache"
 	"strings"
@@ -95,13 +96,10 @@ func TestObjInformer(t *testing.T) {
 
 	controller := newController()
 
-	stopCh := make(chan struct{})
-	defer close(stopCh)
-
 	fmt.Println("Start syncing....")
 
-	go controller.Run(stopCh)
+	go controller.Run(wait.NeverStop)
 
-	<-stopCh
+	<-wait.NeverStop
 
 }

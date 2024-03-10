@@ -14,7 +14,7 @@ import (
 
 func TestConfigMapIndexInformer(t *testing.T) {
 	// client客户端
-	client := config.InitClient()
+	client := config.InitClientOrDie()
 	listWatcher := cache.NewListWatchFromClient(client.CoreV1().RESTClient(), "configmaps", "default", fields.Everything()) // list
 	//index := cache.Indexers{} 空的 没有建立索引与indexFunc的关系。
 	// 建立index
@@ -65,7 +65,7 @@ func MetaAnnotationsIndexFunc(obj interface{}) ([]string, error) {
 // ConfigMapHandler1 事件的回调函数
 type ConfigMapHandler1 struct{}
 
-func (c *ConfigMapHandler1) OnAdd(obj interface{}) {
+func (c *ConfigMapHandler1) OnAdd(obj interface{}, isInInitialList bool) {
 	fmt.Println("add:", obj.(*v1.ConfigMap).Name)
 }
 

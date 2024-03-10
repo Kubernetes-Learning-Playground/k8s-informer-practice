@@ -10,6 +10,7 @@ import (
 	nodev1 "k8s.io/api/node/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
 	"k8s.io/apimachinery/pkg/fields"
+	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/cache"
@@ -92,13 +93,10 @@ func TestObjInformer2(t *testing.T) {
 		},
 	})
 
-	stopCh := make(chan struct{})
-	defer close(stopCh)
-
 	fmt.Println("Start syncing....")
 
-	go controller.Run(stopCh)
+	go controller.Run(wait.NeverStop)
 
-	<-stopCh
+	<-wait.NeverStop
 
 }

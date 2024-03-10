@@ -5,6 +5,7 @@ import (
 	"k8s-informer-controller-practice/config"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/dynamic/dynamicinformer"
 	"k8s.io/client-go/tools/cache"
 	"log"
@@ -66,13 +67,10 @@ func main() {
 		},
 	})
 
-	stopCh := make(chan struct{})
-	defer close(stopCh)
-
 	fmt.Println("Start syncing....")
 
-	go informerFactory.Start(stopCh)
+	go informerFactory.Start(wait.NeverStop)
 
-	<-stopCh
+	<-wait.NeverStop
 
 }

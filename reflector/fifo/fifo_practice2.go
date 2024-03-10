@@ -62,7 +62,7 @@ func main() {
 
 				// 这里进行回调，区分不同事件，可以执行业务逻辑 ex: 统计次数 加入本地缓存等操作。
 				switch delta.Type {
-				case cache.Added:
+				case cache.Added, cache.Sync:
 					fmt.Println("执行新增回调")
 					addNum++
 				case cache.Updated:

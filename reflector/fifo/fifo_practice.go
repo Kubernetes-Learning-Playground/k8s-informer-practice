@@ -59,7 +59,7 @@ func main() {
 
 			// 这里进行回调，区分不同事件。
 			switch delta.Type {
-			case cache.Added:
+			case cache.Added, cache.Sync:
 				fmt.Println("执行新增回调")
 			case cache.Updated:
 				fmt.Println("执行更新回调")
